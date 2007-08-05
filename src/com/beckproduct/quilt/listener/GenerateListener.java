@@ -32,14 +32,14 @@ public class GenerateListener implements ActionListener
 {
     private JFrame frame;
 
-    private ArrayList lastRow;
+    private ArrayList<String> lastRow;
 
-    private ArrayList currentRow;
+    private ArrayList<String> currentRow;
 
     public GenerateListener(JFrame frame)
     {
-        this.lastRow = new ArrayList();
-        this.currentRow = new ArrayList();
+        this.lastRow = new ArrayList<String>();
+        this.currentRow = new ArrayList<String>();
         this.frame = frame;
     }
 
@@ -91,7 +91,7 @@ public class GenerateListener implements ActionListener
         currentRow.add(fileName);
         if (currentRow.size() == 13) {
             lastRow = currentRow;
-            currentRow = new ArrayList();
+            currentRow = new ArrayList<String>();
         }
 
         Image scaledImage = null;

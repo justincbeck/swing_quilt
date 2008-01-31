@@ -1,4 +1,4 @@
-<project name="quiltgenerator" default="default" basedir=".">
+<project name="quiltgenerator" default="compile" basedir=".">
 
 	<property name="lib.dir" location="lib" />
 	<property file="${lib.dir}/lib.properties" />
@@ -22,8 +22,5 @@
 		<delete dir="${build.dir}" />
 		<delete dir="${dist.dir}" />
 	</target>
-	
-	<target name="default" depends="compile" />
-
 </project>
 

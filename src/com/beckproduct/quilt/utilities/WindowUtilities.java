@@ -1,36 +1,44 @@
 package com.beckproduct.quilt.utilities;
 
-import javax.swing.*;
-
 import com.beckproduct.quilt.listener.ExitListener;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class WindowUtilities
 {
     public static void setNativeLookAndFeel()
     {
-        try {
+        try
+        {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             System.out.println("Error setting native LAF: " + e);
         }
     }
 
     public static void setJavaLookAndFeel()
     {
-        try {
+        try
+        {
             UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             System.out.println("Error setting Java LAF: " + e);
         }
     }
 
     public static void setMotifLookAndFeel()
     {
-        try {
+        try
+        {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             System.out.println("Error setting Motif LAF: " + e);
         }
     }

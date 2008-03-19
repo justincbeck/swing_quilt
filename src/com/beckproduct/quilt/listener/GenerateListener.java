@@ -1,32 +1,16 @@
 package com.beckproduct.quilt.listener;
 
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.swing.BorderFactory;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.border.Border;
-import javax.swing.border.TitledBorder;
-
 import com.beckproduct.quilt.utilities.ImageUtilities;
 import com.beckproduct.quilt.utilities.NumberUtilities;
+
+import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.*;
+import java.util.ArrayList;
 
 public class GenerateListener implements ActionListener
 {
@@ -48,7 +32,8 @@ public class GenerateListener implements ActionListener
         Container content = frame.getContentPane();
         Component[] comps = content.getComponents();
 
-        if (comps.length == 2) {
+        if (comps.length == 2)
+        {
             content.remove(1);
         }
 
@@ -62,8 +47,10 @@ public class GenerateListener implements ActionListener
         jQuiltPanel.setBorder(titledBorder);
 
         JPanel quilt = new JPanel(new GridLayout(9, 13));
-        for (int row = 0; row < 9; row++) {
-            for (int col = 0; col < 13; col++) {
+        for (int row = 0; row < 9; row++)
+        {
+            for (int col = 0; col < 13; col++)
+            {
                 Component tile = getNextTile(row, col);
                 quilt.add(tile);
             }
@@ -78,37 +65,48 @@ public class GenerateListener implements ActionListener
     private Component getNextTile(int row, int col)
     {
         String fileName = getFileName();
-        if (row == 0) {
-            while (currentRow.size() > 0 && (currentRow.get(col - 1)).equalsIgnoreCase(fileName)) {
+        if (row == 0)
+        {
+            while (currentRow.size() > 0 && (currentRow.get(col - 1)).equalsIgnoreCase(fileName))
+            {
                 fileName = getFileName();
             }
         }
-        else {
-            while (currentRow.size() > 0 && (currentRow.get(col - 1)).equalsIgnoreCase(fileName) || (lastRow.get(col)).equalsIgnoreCase(fileName)) {
+        else
+        {
+            while (currentRow.size() > 0 && (currentRow.get(col - 1)).equalsIgnoreCase(fileName) || (lastRow.get(col)).equalsIgnoreCase(fileName))
+            {
                 fileName = getFileName();
             }
         }
         currentRow.add(fileName);
-        if (currentRow.size() == 13) {
+        if (currentRow.size() == 13)
+        {
             lastRow = currentRow;
             currentRow = new ArrayList<String>();
         }
 
         Image scaledImage = null;
         FileInputStream fis;
-        try {
+        try
+        {
             fis = new FileInputStream(fileName);
             BufferedInputStream bis = new BufferedInputStream(fis);
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             int ch;
-            while ((ch = bis.read()) != -1) {
+            while ((ch = bis.read()) != -1)
+            {
                 baos.write(ch);
             }
             Image originalImage = Toolkit.getDefaultToolkit().createImage(baos.toByteArray());
             scaledImage = ImageUtilities.performRandomRotation(originalImage).getScaledInstance(50, 50, 0);
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e)
+        {
             System.out.println("I cannot find the file: " + fileName);
-        } catch (IOException ioe) {
+        }
+        catch (IOException ioe)
+        {
             System.out.println("Error reading file: " + fileName);
         }
         Icon icon = new ImageIcon(scaledImage);
@@ -119,16 +117,17 @@ public class GenerateListener implements ActionListener
     {
         String fileName = "";
         int nextInt = Integer.parseInt(NumberUtilities.getRandomNumber("012"));
-        switch (nextInt) {
-        case 0:
-            fileName = "images/Stripe.jpg";
-            break;
-        case 1:
-            fileName = "images/Solid.jpg";
-            break;
-        case 2:
-            fileName = "images/Print.jpg";
-            break;
+        switch (nextInt)
+        {
+            case 0:
+                fileName = "images/Stripe.jpg";
+                break;
+            case 1:
+                fileName = "images/Solid.jpg";
+                break;
+            case 2:
+                fileName = "images/Print.jpg";
+                break;
         }
         return fileName;
     }

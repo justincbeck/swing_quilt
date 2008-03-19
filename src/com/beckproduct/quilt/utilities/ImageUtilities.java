@@ -47,9 +47,7 @@ public class ImageUtilities
     public static BufferedImage toBufferedImage(GraphicsConfiguration config, Image image)
     {
         image = new ImageIcon(image).getImage();
-        BufferedImage bufferedImage = null;
-
-        bufferedImage = config.createCompatibleImage(image.getWidth(null), image.getHeight(null), Transparency.OPAQUE);
+        BufferedImage bufferedImage = config.createCompatibleImage(image.getWidth(null), image.getHeight(null), Transparency.OPAQUE);
         
         Graphics graphics = bufferedImage.createGraphics();
         graphics.drawImage(image, 0, 0, null);

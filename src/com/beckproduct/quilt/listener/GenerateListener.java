@@ -79,12 +79,12 @@ public class GenerateListener implements ActionListener
     {
         String fileName = getFileName();
         if (row == 0) {
-            while (currentRow.size() > 0 && ((String) currentRow.get(col - 1)).equalsIgnoreCase(fileName)) {
+            while (currentRow.size() > 0 && (currentRow.get(col - 1)).equalsIgnoreCase(fileName)) {
                 fileName = getFileName();
             }
         }
         else {
-            while (currentRow.size() > 0 && ((String) currentRow.get(col - 1)).equalsIgnoreCase(fileName) || ((String) lastRow.get(col)).equalsIgnoreCase(fileName)) {
+            while (currentRow.size() > 0 && (currentRow.get(col - 1)).equalsIgnoreCase(fileName) || (lastRow.get(col)).equalsIgnoreCase(fileName)) {
                 fileName = getFileName();
             }
         }
@@ -95,7 +95,7 @@ public class GenerateListener implements ActionListener
         }
 
         Image scaledImage = null;
-        FileInputStream fis = null;
+        FileInputStream fis;
         try {
             fis = new FileInputStream(fileName);
             BufferedInputStream bis = new BufferedInputStream(fis);
@@ -112,8 +112,7 @@ public class GenerateListener implements ActionListener
             System.out.println("Error reading file: " + fileName);
         }
         Icon icon = new ImageIcon(scaledImage);
-        JLabel tile = new JLabel(icon);
-        return tile;
+        return new JLabel(icon);
     }
 
     private String getFileName()

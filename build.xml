@@ -6,16 +6,28 @@
 	<property name="base.dir" value="." />
 	<property name="src.dir" value="src" />	
 	<property name="build.dir" value="build" />
+	<property name="dist.dir" value="dist" />
 
 	<target name="prepare">
 		<tstamp />
 		<mkdir dir="${build.dir}" />
+		<mkdir dir="${dist.dir}" />
 	</target>
 
 	<target name="compile" depends="prepare">
 		<javac destdir="${build.dir}" deprecation="on" debug="true">
 			<src path="${src.dir}" />
 		</javac>
+	</target>
+	
+	<target name="package" depends="compile">
+		<jar jarfile="${dist.dir}/swing-quilt.jar"
+			basedir="${build.dir}">
+			
+			<manifest>
+				<attribute name="Main-Class" value="com.beckproduct.quilt.panel.QuiltPanel"/>
+			</manifest>
+		</jar>
 	</target>
 	
 	<target name="clean">

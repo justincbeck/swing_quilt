@@ -13,6 +13,11 @@
 		<mkdir dir="${build.dir}" />
 		<mkdir dir="${dist.dir}" />
 	</target>
+	
+	<target name="clean">
+		<delete dir="${build.dir}" />
+		<delete dir="${dist.dir}" />
+	</target>
 
 	<target name="compile" depends="prepare">
 		<javac destdir="${build.dir}" deprecation="on" debug="true">
@@ -20,20 +25,34 @@
 		</javac>
 	</target>
 	
-	<target name="package" depends="compile">
-		<jar jarfile="${dist.dir}/swing-quilt.jar"
-			basedir="${build.dir}">
-			
-			<manifest>
-				<attribute name="Main-Class" value="com.beckproduct.quilt.panel.QuiltPanel"/>
-			</manifest>
-		</jar>
+    <!-- Eeeeeesssssaaaabrooooooke
+    <target name="package" depends="compile">
+        <jar jarfile="${dist.dir}/swing-quilt.jar"
+            basedir="${build.dir}">
+            
+            <manifest>
+                <attribute name="Main-Class" value="com.beckproduct.quilt.panel.QuiltPanel"/>
+            </manifest>
+        </jar>
+    </target> -->
+	
+	<target name="run" depends="compile">
+		<run-main class="com.beckproduct.quilt.panel.QuiltPanel" />
 	</target>
 	
-	<target name="clean">
-		<delete dir="${build.dir}" />
-		<delete dir="${dist.dir}" />
-	</target>
+	<!-- Execute main method within a class -->
+	<macrodef name="run-main">
+		<attribute name="class" />
+		<sequential>
+			<echo>Running @{class}...</echo>
+			<java classname="@{class}" fork="true" spawn="no">
+    			<classpath>
+    				<pathelement location="${build.dir}" />
+    				<pathelement location="." />
+    			</classpath>
+			</java>
+		</sequential>
+	</macrodef>
 </project>
 
 

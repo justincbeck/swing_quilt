@@ -12,6 +12,8 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
 
+import org.apache.commons.lang.*;
+
 public class GenerateListener implements ActionListener
 {
     private JFrame frame;
@@ -19,6 +21,10 @@ public class GenerateListener implements ActionListener
     private ArrayList<String> lastRow;
 
     private ArrayList<String> currentRow;
+
+    private int rows = 9;
+
+    private int cols = 13;
 
     public GenerateListener(JFrame frame)
     {
@@ -30,26 +36,29 @@ public class GenerateListener implements ActionListener
     public void actionPerformed(ActionEvent event)
     {
         Container content = frame.getContentPane();
+
+        this.setDimensions(content);
+
         Component[] comps = content.getComponents();
 
-        if (comps.length == 2)
+        if (comps.length == 3)
         {
-            content.remove(1);
+            content.remove(2);
         }
 
         JPanel jQuiltPanel = new JPanel(new BorderLayout());
         jQuiltPanel.setName("quiltPanel");
-        jQuiltPanel.setPreferredSize(new Dimension(670, 450));
+        jQuiltPanel.setPreferredSize(new Dimension(this.cols * 50, this.rows * 50));
         jQuiltPanel.setVisible(true);
 
         Border border = BorderFactory.createEtchedBorder();
         TitledBorder titledBorder = BorderFactory.createTitledBorder(border, "Your quilt Madam!");
         jQuiltPanel.setBorder(titledBorder);
 
-        JPanel quilt = new JPanel(new GridLayout(9, 13));
-        for (int row = 0; row < 9; row++)
+        JPanel quilt = new JPanel(new GridLayout(this.rows, this.cols, 0, 0));
+        for (int row = 0; row < this.rows; row++)
         {
-            for (int col = 0; col < 13; col++)
+            for (int col = 0; col < this.cols; col++)
             {
                 Component tile = getNextTile(row, col);
                 quilt.add(tile);
@@ -65,6 +74,7 @@ public class GenerateListener implements ActionListener
     private Component getNextTile(int row, int col)
     {
         String fileName = getFileName();
+
         if (row == 0)
         {
             while (currentRow.size() > 0 && (currentRow.get(col - 1)).equalsIgnoreCase(fileName))
@@ -79,38 +89,36 @@ public class GenerateListener implements ActionListener
                 fileName = getFileName();
             }
         }
+
         currentRow.add(fileName);
-        if (currentRow.size() == 13)
+
+        if (currentRow.size() == this.cols)
         {
             lastRow = currentRow;
             currentRow = new ArrayList<String>();
         }
 
-        Image scaledImage = null;
-        FileInputStream fis;
-        try
+        return new JLabel(getImage(fileName));
+    }
+
+    private void setDimensions(Container content)
+    {
+        Component[] components = content.getComponents();
+
+        JPanel dimensionPanel = (JPanel) components[1];
+        JTextField rowsField = (JTextField) dimensionPanel.getComponents()[1];
+        JTextField colsField = (JTextField) dimensionPanel.getComponents()[3];
+
+        if (!StringUtils.isEmpty(rowsField.getText()) && !StringUtils.isEmpty(colsField.getText()))
         {
-            fis = new FileInputStream(fileName);
-            BufferedInputStream bis = new BufferedInputStream(fis);
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            int ch;
-            while ((ch = bis.read()) != -1)
-            {
-                baos.write(ch);
-            }
-            Image originalImage = Toolkit.getDefaultToolkit().createImage(baos.toByteArray());
-            scaledImage = ImageUtilities.performRandomRotation(originalImage).getScaledInstance(50, 50, 0);
+            this.rows = Integer.parseInt(rowsField.getText());
+            this.cols = Integer.parseInt(colsField.getText());
         }
-        catch (FileNotFoundException e)
+        else
         {
-            System.out.println("I cannot find the file: " + fileName);
+            this.rows = 9;
+            this.cols = 13;
         }
-        catch (IOException ioe)
-        {
-            System.out.println("Error reading file: " + fileName);
-        }
-        Icon icon = new ImageIcon(scaledImage);
-        return new JLabel(icon);
     }
 
     private String getFileName()
@@ -130,5 +138,35 @@ public class GenerateListener implements ActionListener
                 break;
         }
         return fileName;
+    }
+
+    private Icon getImage(String fileName)
+    {
+        Image scaledImage = null;
+        FileInputStream fis;
+        try
+        {
+            fis = new FileInputStream(fileName);
+            BufferedInputStream bis = new BufferedInputStream(fis);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            int ch;
+            while ((ch = bis.read()) != -1)
+            {
+                baos.write(ch);
+            }
+            Image originalImage = Toolkit.getDefaultToolkit().createImage(baos.toByteArray());
+            scaledImage = ImageUtilities.performRandomRotation(originalImage).getScaledInstance(50, 50, 0);
+        }
+        catch (FileNotFoundException e)
+        {
+            System.err.println("I cannot find the file: " + fileName);
+            return null;
+        }
+        catch (IOException ioe)
+        {
+            System.err.println("Error reading file: " + fileName);
+            return null;
+        }
+        return new ImageIcon(scaledImage);
     }
 }

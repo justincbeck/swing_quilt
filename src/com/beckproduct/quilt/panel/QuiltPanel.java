@@ -42,6 +42,28 @@ public class QuiltPanel extends JPanel
         Container content = frame.getContentPane();
         content.setLayout(new FlowLayout());
 
+        JLabel rowsLabel = new JLabel();
+        rowsLabel.setText("Row count:");
+        rowsLabel.setVisible(true);
+
+        JTextField rowsText = new JTextField(3);
+        rowsText.setName("rowsText");
+        rowsLabel.setVisible(true);
+
+        JLabel colsLabel = new JLabel();
+        colsLabel.setText("Column count:");
+        rowsLabel.setVisible(true);
+
+        JTextField colsText = new JTextField(3);
+        colsText.setName("colsText");
+        rowsLabel.setVisible(true);
+
+        JPanel jDimensionPanel = new JPanel(new GridLayout(2, 2));
+        jDimensionPanel.add(rowsLabel);
+        jDimensionPanel.add(rowsText);
+        jDimensionPanel.add(colsLabel);
+        jDimensionPanel.add(colsText);
+
         JPanel jButtonPanel = new JPanel(new BorderLayout());
         jButtonPanel.setPreferredSize(new Dimension(180, 90));
         jButtonPanel.setVisible(true);
@@ -58,6 +80,7 @@ public class QuiltPanel extends JPanel
         jButtonPanel.add(go, BorderLayout.CENTER);
 
         content.add(jButtonPanel);
+        content.add(jDimensionPanel);
         frame.addWindowListener(new ExitListener());
         frame.setVisible(true);
     }

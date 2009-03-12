@@ -163,6 +163,11 @@ public class GenerateListener implements ActionListener
             System.err.println("Error reading file: " + fileName);
             return null;
         }
+        catch (Exception e)
+        {
+            System.err.println("Error!");
+            return null;
+        }
         return new ImageIcon(scaledImage);
     }
 }

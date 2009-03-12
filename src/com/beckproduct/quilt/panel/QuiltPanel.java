@@ -1,13 +1,10 @@
 package com.beckproduct.quilt.panel;
 
-import com.beckproduct.quilt.listener.ExitListener;
-import com.beckproduct.quilt.listener.GenerateListener;
-import com.beckproduct.quilt.listener.PrintListener;
-import com.beckproduct.quilt.utilities.WindowUtilities;
+import com.beckproduct.quilt.listener.*;
+import com.beckproduct.quilt.utilities.*;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.TitledBorder;
+import javax.swing.border.*;
 import java.awt.*;
 
 public class QuiltPanel extends JPanel

@@ -1,7 +1,6 @@
 package com.beckproduct.quilt.listener;
 
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 
 public class ExitListener extends WindowAdapter
 {

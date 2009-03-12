@@ -1,18 +1,14 @@
 package com.beckproduct.quilt.listener;
 
-import com.beckproduct.quilt.utilities.ImageUtilities;
-import com.beckproduct.quilt.utilities.NumberUtilities;
+import com.beckproduct.quilt.utilities.*;
+import org.apache.commons.lang.*;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.TitledBorder;
+import javax.swing.border.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.io.*;
-import java.util.ArrayList;
-
-import org.apache.commons.lang.*;
+import java.util.*;
 
 public class GenerateListener implements ActionListener
 {
@@ -142,7 +138,7 @@ public class GenerateListener implements ActionListener
 
     private Icon getImage(String fileName)
     {
-        Image scaledImage = null;
+        Image scaledImage;
         FileInputStream fis;
         try
         {

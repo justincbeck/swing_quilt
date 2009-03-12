@@ -7,7 +7,16 @@
 	<property name="src.dir" value="src" />	
 	<property name="build.dir" value="build" />
 	<property name="dist.dir" value="dist" />
+	
+	<path id="commons-lang.classpath">
+		<fileset dir="${commons-lang.dir}" includes="*.jar" />
+	</path>
 
+	<path id="main.classpath">
+		<path refid="commons-lang.classpath" />
+		<pathelement path="${build.dir}" />
+	</path>
+	
 	<target name="prepare">
 		<tstamp />
 		<mkdir dir="${build.dir}" />
@@ -21,6 +30,7 @@
 
 	<target name="compile" depends="prepare">
 		<javac destdir="${build.dir}" deprecation="on" debug="true">
+			<classpath refid="main.classpath" />
 			<src path="${src.dir}" />
 		</javac>
 	</target>
@@ -46,9 +56,8 @@
 		<sequential>
 			<echo>Running @{class}...</echo>
 			<java classname="@{class}" fork="true" spawn="no">
-    			<classpath>
-    				<pathelement location="${build.dir}" />
-    				<pathelement location="." />
+				<classpath>
+					<path refid="main.classpath" />
     			</classpath>
 			</java>
 		</sequential>

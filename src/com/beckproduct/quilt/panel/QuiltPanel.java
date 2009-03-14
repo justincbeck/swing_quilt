@@ -26,9 +26,10 @@ public class QuiltPanel extends JPanel
         frame.setSize(750, 600);
 
         JMenuItem menuItem = new JMenuItem("Print");
+        menuItem.setName("Print");
         menuItem.addActionListener(new PrintListener());
 
-        JMenu menu = new JMenu();
+        JMenu menu = new JMenu("Menu");
         menu.add(menuItem);
 
         JMenuBar menuBar = new JMenuBar();

@@ -120,7 +120,7 @@ public class GenerateListener implements ActionListener
     private String getFileName()
     {
         String fileName = "";
-        int nextInt = Integer.parseInt(NumberUtilities.getRandomNumber("012"));
+        int nextInt = Integer.parseInt(NumberUtilities.getRandomNumber(3));
         switch (nextInt)
         {
             case 0:

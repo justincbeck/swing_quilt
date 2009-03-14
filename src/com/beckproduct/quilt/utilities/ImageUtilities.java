@@ -8,7 +8,7 @@ public class ImageUtilities
 {
     public static Image performRandomRotation(Image image)
     {
-        int nextInt = Integer.parseInt(NumberUtilities.getRandomNumber("0123"));
+        int nextInt = Integer.parseInt(NumberUtilities.getRandomNumber(4));
         double angle = Math.toRadians(nextInt * 90);
 
         GraphicsEnvironment environment = GraphicsEnvironment.getLocalGraphicsEnvironment();

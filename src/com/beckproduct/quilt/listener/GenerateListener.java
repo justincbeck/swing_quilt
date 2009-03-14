@@ -22,6 +22,10 @@ public class GenerateListener implements ActionListener
 
     private int cols = 13;
 
+    private int rotation;
+
+    private String fileName;
+
     public GenerateListener(JFrame frame)
     {
         this.lastRow = new ArrayList<String>();
@@ -151,6 +155,8 @@ public class GenerateListener implements ActionListener
                 baos.write(ch);
             }
             Image originalImage = Toolkit.getDefaultToolkit().createImage(baos.toByteArray());
+
+            // TODO: Figure out how to track the rotation of the tile so I can save it
             scaledImage = ImageUtilities.performRandomRotation(originalImage).getScaledInstance(50, 50, 0);
         }
         catch (FileNotFoundException e)

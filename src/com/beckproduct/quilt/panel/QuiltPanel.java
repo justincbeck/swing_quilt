@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class QuiltPanel extends JPanel
 {
-    public static final long serialVersionUID = 1l;
+    public static final long serialVersionUID = 1l;   
 
     public static void main(String[] args)
     {

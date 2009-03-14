@@ -9,7 +9,6 @@ import java.awt.*;
 
 public class QuiltPanel extends JPanel
 {
-
     public static final long serialVersionUID = 1l;
 
     public static void main(String[] args)
@@ -25,15 +24,30 @@ public class QuiltPanel extends JPanel
         frame.setName("mainFrame");
         frame.setSize(750, 600);
 
-        JMenuItem menuItem = new JMenuItem("Print");
-        menuItem.setName("Print");
-        menuItem.addActionListener(new PrintListener());
+        JMenuItem newItem = new JMenuItem("New");
+        newItem.setName("new");
+        newItem.addActionListener(new NewListener());
 
-        JMenu menu = new JMenu("Menu");
-        menu.add(menuItem);
+        JMenuItem saveItem = new JMenuItem("Save");
+        saveItem.setName("save");
+        saveItem.addActionListener(new SaveListener());
+
+        JMenuItem saveAsItem = new JMenuItem("Save As");
+        saveAsItem.setName("saveAs");
+        saveAsItem.addActionListener(new SaveAsListener());
+
+        JMenuItem printItem = new JMenuItem("Print");
+        printItem.setName("print");
+        printItem.addActionListener(new PrintListener());
+
+        JMenu fileMenu = new JMenu("File");
+        fileMenu.add(newItem);
+        fileMenu.add(saveItem);
+        fileMenu.add(saveAsItem);
+        fileMenu.add(printItem);
 
         JMenuBar menuBar = new JMenuBar();
-        menuBar.add(menu);
+        menuBar.add(fileMenu);
 
         frame.setJMenuBar(menuBar);
 

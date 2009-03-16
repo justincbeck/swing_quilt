@@ -12,8 +12,28 @@
 		<fileset dir="${commons-lang.dir}" includes="*.jar" />
 	</path>
 
+    <path id="commons-logging.classpath">
+        <fileset dir="${commons-logging.dir}" includes="*.jar" />
+    </path>
+
+    <path id="hibernate-annotations.classpath">
+        <fileset dir="${hibernate-annotations.dir}" includes="*.jar" />
+    </path>
+
+    <path id="hibernate.classpath">
+        <fileset dir="${hibernate.dir}" includes="*.jar" />
+    </path>
+
+    <path id="spring.classpath">
+        <fileset dir="${spring.dir}" includes="*.jar" />
+    </path>
+
 	<path id="main.classpath">
 		<path refid="commons-lang.classpath" />
+        <path refid="commons-logging.classpath" />
+        <path refid="hibernate-annotations.classpath" />
+        <path refid="hibernate.classpath" />
+        <path refid="spring.classpath" />
 		<pathelement path="${build.dir}" />
 	</path>
 	

@@ -276,6 +276,58 @@
       <JAVADOC />
       <SOURCES />
     </library>
+    <library name="Hibernate">
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/lib/hibernate-3.3.1/lib/hibernate3.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/hibernate-3.3.1/lib/antlr-2.7.6.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/hibernate-3.3.1/lib/javassist-3.4.GA.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/hibernate-3.3.1/lib/commons-collections-3.1.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/hibernate-3.3.1/lib/slf4j-api-1.5.2.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/hibernate-3.3.1/lib/jta-1.1.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/hibernate-3.3.1/lib/dom4j-1.6.1.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
+    <library name="Hibernate-Annotations">
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/lib/hibernate-annotations-3.4.0/lib/hibernate-annotations.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
+    <library name="Spring-3.0.0.M2">
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/lib/spring-3.0.0.M2/lib/org.springframework.context-3.0.0.M2.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/spring-3.0.0.M2/lib/org.springframework.web.servlet-3.0.0.M2.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/spring-3.0.0.M2/lib/org.springframework.transaction-3.0.0.M2.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/spring-3.0.0.M2/lib/org.springframework.expression-3.0.0.M2.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/spring-3.0.0.M2/lib/org.springframework.integration-tests-3.0.0.M2.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/spring-3.0.0.M2/lib/org.springframework.core-3.0.0.M2.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/spring-3.0.0.M2/lib/org.springframework.web-3.0.0.M2.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/spring-3.0.0.M2/lib/org.springframework.jdbc-3.0.0.M2.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/spring-3.0.0.M2/lib/org.springframework.aop-3.0.0.M2.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/spring-3.0.0.M2/lib/org.springframework.oxm-3.0.0.M2.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/spring-3.0.0.M2/lib/org.springframework.orm-3.0.0.M2.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/spring-3.0.0.M2/lib/org.springframework.test-3.0.0.M2.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/spring-3.0.0.M2/lib/org.springframework.instrument.classloading-3.0.0.M2.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/spring-3.0.0.M2/lib/org.springframework.context.support-3.0.0.M2.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/spring-3.0.0.M2/lib/org.springframework.jms-3.0.0.M2.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/spring-3.0.0.M2/lib/org.springframework.web.portlet-3.0.0.M2.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/spring-3.0.0.M2/lib/org.springframework.instrument-3.0.0.M2.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/spring-3.0.0.M2/lib/org.springframework.beans-3.0.0.M2.jar!/" />
+        <root url="jar://$PROJECT_DIR$/lib/spring-3.0.0.M2/lib/org.springframework.aspects-3.0.0.M2.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
+    <library name="Commons-Logging">
+      <CLASSES>
+        <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.1.1/lib/commons-logging-1.1.1.jar!/" />
+      </CLASSES>
+      <JAVADOC />
+      <SOURCES />
+    </library>
   </component>
 </project>
 

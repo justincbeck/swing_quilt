@@ -1,6 +1,9 @@
 package com.beckproduct.quilt.repository;
 
 import com.beckproduct.quilt.domain.*;
+import org.springframework.orm.hibernate3.support.*;
+
+import java.io.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -8,25 +11,35 @@ import com.beckproduct.quilt.domain.*;
  * Date: Mar 15, 2009
  * Time: 11:28:56 AM
  */
-public class TileRepository implements ITileRepository
+public class TileRepository extends HibernateDaoSupport implements ITileRepository
 {
-    public void create(QuiltTile tile)
+    public void create(Object instance)
     {
-        //To change body of implemented methods use File | Settings | File Templates.
+        this.update(instance);
     }
 
-    public QuiltTile get(String id)
+    public Object getInstance(Serializable id)
     {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return getHibernateTemplate().get(QuiltTile.class, id);
     }
 
-    public void update(QuiltTile tile)
+    public Object update(Object instance)
     {
-        //To change body of implemented methods use File | Settings | File Templates.
+        QuiltTile tile = (QuiltTile) instance;
+        getHibernateTemplate().saveOrUpdate(tile);
+        getHibernateTemplate().flush();
+        return tile;
     }
 
-    public void delete(QuiltTile tile)
+    public void delete(Serializable id)
     {
-        //To change body of implemented methods use File | Settings | File Templates.
+        QuiltTile target = (QuiltTile) this.getInstance(id);
+        getHibernateTemplate().delete(target);
+        getHibernateTemplate().flush();
+    }
+
+    public void test()
+    {
+        System.out.println("Test");
     }
 }

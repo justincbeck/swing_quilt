@@ -7,12 +7,16 @@ import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
 
+import org.springframework.context.support.*;
+
 public class QuiltPanel extends JPanel
 {
     public static final long serialVersionUID = 1l;   
 
     public static void main(String[] args)
     {
+//        String[] contextPaths = new String[]{"conf/applicationContext.xml"};
+//        new FileSystemXmlApplicationContext(contextPaths);
         QuiltPanel generator = new QuiltPanel();
         generator.start();
     }

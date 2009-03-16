@@ -2,6 +2,8 @@ package com.beckproduct.quilt.repository;
 
 import com.beckproduct.quilt.domain.*;
 
+import java.io.*;
+
 /**
  * Created by IntelliJ IDEA.
  * User: jbeck
@@ -10,11 +12,13 @@ import com.beckproduct.quilt.domain.*;
  */
 public interface ITileRepository
 {
-    public void create(QuiltTile tile);
+    public void create(Object tile);
 
-    public QuiltTile get(String id);
+    public Object getInstance(Serializable id);
 
-    public void update(QuiltTile tile);
+    public Object update(Object tile);
 
-    public void delete(QuiltTile tile);
+    public void delete(Serializable id);
+
+    public void test();
 }

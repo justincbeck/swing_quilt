@@ -58,7 +58,7 @@ public class GenerateListener implements ActionListener
             for (int col = 0; col < this.cols; col++)
             {
                 QuiltTile tile = getNextTile(row, col);
-                quilt.add(tile.getImage());
+                quilt.add(tile);
             }
         }
 
@@ -171,12 +171,7 @@ public class GenerateListener implements ActionListener
             System.err.println("Error reading file: " + fileName);
             return null;
         }
-        catch (Exception e)
-        {
-            System.err.println("Error!");
-            return null;
-        }
         
-        return new QuiltTile(new JLabel(new ImageIcon(scaledImage)), fileName, rotation);
+        return new QuiltTile(new ImageIcon(scaledImage), fileName, rotation);
     }
 }

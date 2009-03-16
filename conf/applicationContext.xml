@@ -1,99 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
-    "http://www.springframework.org/dtd/spring-beans.dtd">
+        "http://www.springframework.org/dtd/spring-beans.dtd">
 
-<beans>	
-	<bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName">
-			<value>org.hsqldb.jdbcDriver</value>
-		</property>
-		<property name="url">
-			<value>jdbc:hsqldb:mem:hibernate_annotations</value>
-		</property>
-		<property name="username">
-			<value>sa</value>
-		</property>
-		<property name="password">
-			<value></value>
-		</property>
-	</bean>
-    
+<beans>
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName">
+            <value>org.hsqldb.jdbcDriver</value>
+        </property>
+        <property name="url">
+            <value>jdbc:hsqldb:mem:hibernate_annotations</value>
+        </property>
+        <property name="username">
+            <value>sa</value>
+        </property>
+        <property name="password">
+            <value></value>
+        </property>
+    </bean>
+
     <bean id="factory"
-		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
-		<property name="dataSource">
-			<ref local="dataSource" />
-		</property>
-		<property name="mappingResources">
-			<list>
-				<value>com/beckproduct/quilt/domain/QuiltTile.hbm.xml</value>
-			</list>
-		</property>
-		<property name="hibernateProperties">
-			<props>
-				<prop key="hibernate.dialect">
-					org.hibernate.dialect.HSQLDialect
-				</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
-			</props>
-		</property>
-	</bean>
-	
-	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
-		<property name="sessionFactory">
-			<ref local="factory" />
-		</property>
-	</bean>
-	
-	<bean id="txProxyServiceTemplate" abstract="true"
-		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
-		<property name="transactionManager">
-			<ref local="transactionManager" />
-		</property>
-		<property name="transactionAttributes">
-			<props>
-				<prop key="*">PROPAGATION_REQUIRES_NEW</prop>
-			</props>
-		</property>
-	</bean>
-	
-	<bean id="txProxyPersistenceTemplate" abstract="true"
-		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
-		<property name="transactionManager">
-			<ref local="transactionManager" />
-		</property>
-		<property name="transactionAttributes">
-			<props>
-				<prop key="*">PROPAGATION_REQUIRED</prop>
-			</props>
-		</property>
-	</bean>
+          class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource">
+            <ref local="dataSource"/>
+        </property>
+        <property name="mappingResources">
+            <list>
+                <value>com/beckproduct/quilt/domain/QuiltTile.hbm.xml</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">
+                    org.hibernate.dialect.HSQLDialect
+                </prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+    </bean>
 
-    <bean id="newItem"
-        class="com.beckproduct.quilt.component.NewItem">
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory">
+            <ref local="factory"/>
+        </property>
+    </bean>
+
+    <bean id="txProxyServiceTemplate" abstract="true"
+          class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref local="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">PROPAGATION_REQUIRES_NEW</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="txProxyPersistenceTemplate" abstract="true"
+          class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref local="transactionManager"/>
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="newItem" init-method="init"
+          class="com.beckproduct.quilt.component.NewItem">
         <property name="actionListener">
-            <ref local="newListener" />
+            <ref local="newListener"/>
         </property>
     </bean>
 
     <bean id="newListener"
           class="com.beckproduct.quilt.listener.NewListener">
         <property name="tileRepository">
-            <ref local="tileRepository" />
+            <ref local="tileRepository"/>
         </property>
     </bean>
 
     <bean id="tileRepositoryTarget"
-		class="com.beckproduct.quilt.repository.TileRepository">
-		<property name="sessionFactory">
-			<ref local="factory" />
-		</property>
-	</bean>
+          class="com.beckproduct.quilt.repository.TileRepository">
+        <property name="sessionFactory">
+            <ref local="factory"/>
+        </property>
+    </bean>
 
-	<bean id="tileRepository" parent="txProxyPersistenceTemplate">
-		<property name="target">
-			<ref local="tileRepositoryTarget" />
-		</property>
-	</bean>
+    <bean id="tileRepository" parent="txProxyPersistenceTemplate">
+        <property name="target">
+            <ref local="tileRepositoryTarget"/>
+        </property>
+    </bean>
 </beans>

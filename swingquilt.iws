@@ -92,7 +92,7 @@
       <file leaf-file-name="NewItem.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/beckproduct/quilt/component/NewItem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="13" selection-start="215" selection-end="215" vertical-scroll-proportion="0.33333334">
+            <state line="13" column="1" selection-start="242" selection-end="242" vertical-scroll-proportion="0.36150235">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -100,57 +100,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NewFrame.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/beckproduct/quilt/frame/NewFrame.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="82" selection-start="625" selection-end="625" vertical-scroll-proportion="0.5915493">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NewListener.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/beckproduct/quilt/listener/NewListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="0" selection-start="149" selection-end="149" vertical-scroll-proportion="0.1971831">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CreateListener.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/beckproduct/quilt/listener/CreateListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="0" selection-start="88" selection-end="88" vertical-scroll-proportion="0.112676054">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="applicationContext.xml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="applicationContext.xml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/conf/applicationContext.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="79" column="17" selection-start="2240" selection-end="2240" vertical-scroll-proportion="2.6043956">
+            <state line="83" column="57" selection-start="2868" selection-end="2868" vertical-scroll-proportion="0.30769232">
               <folding />
             </state>
           </provider>
           <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QuiltTile.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/beckproduct/quilt/domain/QuiltTile.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="0" selection-start="157" selection-end="157" vertical-scroll-proportion="0.34736842">
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
             <state />
           </provider>
         </entry>
@@ -614,7 +571,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="19" y="41" width="1351" height="842" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925898" order="3" />
@@ -630,7 +587,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24884793" order="1" />
       <window_info id="Maven projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32872504" order="5" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292011" order="11" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32823366" order="2" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32823366" order="2" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39938557" order="0" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3991655" order="4" />
@@ -797,6 +754,15 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/beckproduct/quilt/panel/QuiltPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="0" selection-start="1003" selection-end="1003" vertical-scroll-proportion="0.5633803">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/beckproduct/quilt/domain/QuiltTile.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="11" column="0" selection-start="157" selection-end="157" vertical-scroll-proportion="0.34736842">
@@ -807,32 +773,13 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/beckproduct/quilt/component/NewItem.java">
+    <entry file="file://$PROJECT_DIR$/src/com/beckproduct/quilt/listener/CreateListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="13" selection-start="215" selection-end="215" vertical-scroll-proportion="0.33333334">
+        <state line="26" column="0" selection-start="488" selection-end="488" vertical-scroll-proportion="0.73239434">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/beckproduct/quilt/panel/QuiltPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="0" selection-start="1003" selection-end="1003" vertical-scroll-proportion="0.5633803">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/conf/applicationContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="17" selection-start="2240" selection-end="2240" vertical-scroll-proportion="2.6043956">
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/beckproduct/quilt/listener/NewListener.java">
@@ -851,13 +798,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/beckproduct/quilt/listener/CreateListener.java">
+    <entry file="file://$PROJECT_DIR$/src/com/beckproduct/quilt/component/NewItem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="0" selection-start="88" selection-end="88" vertical-scroll-proportion="0.112676054">
+        <state line="13" column="1" selection-start="242" selection-end="242" vertical-scroll-proportion="0.36150235">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conf/applicationContext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="57" selection-start="2868" selection-end="2868" vertical-scroll-proportion="0.30769232">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.spring.perspectives.SpringBeansStructureEditorProvider">
+        <state />
       </provider>
     </entry>
   </component>

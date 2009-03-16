@@ -6,10 +6,9 @@ import java.awt.image.BufferedImage;
 
 public class ImageUtilities
 {
-    public static Image performRandomRotation(Image image)
+    public static Image performRotation(Image image, int rotation)
     {
-        int nextInt = NumberUtilities.getRandomNumber(4);
-        double angle = Math.toRadians(nextInt * 90);
+        double angle = Math.toRadians(rotation * 90);
 
         GraphicsEnvironment environment = GraphicsEnvironment.getLocalGraphicsEnvironment();
         GraphicsDevice device = environment.getDefaultScreenDevice();

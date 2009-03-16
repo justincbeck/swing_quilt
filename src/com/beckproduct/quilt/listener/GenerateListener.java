@@ -1,6 +1,7 @@
 package com.beckproduct.quilt.listener;
 
 import com.beckproduct.quilt.utilities.*;
+import com.beckproduct.quilt.domain.*;
 import org.apache.commons.lang.*;
 
 import javax.swing.*;
@@ -21,10 +22,6 @@ public class GenerateListener implements ActionListener
     private int rows = 9;
 
     private int cols = 13;
-
-    private int rotation;
-
-    private String fileName;
 
     public GenerateListener(JFrame frame)
     {
@@ -60,8 +57,8 @@ public class GenerateListener implements ActionListener
         {
             for (int col = 0; col < this.cols; col++)
             {
-                Component tile = getNextTile(row, col);
-                quilt.add(tile);
+                QuiltTile tile = getNextTile(row, col);
+                quilt.add(tile.getImage());
             }
         }
 
@@ -71,7 +68,7 @@ public class GenerateListener implements ActionListener
         frame.setContentPane(content);
     }
 
-    private Component getNextTile(int row, int col)
+    private QuiltTile getNextTile(int row, int col)
     {
         String fileName = getFileName();
 
@@ -98,7 +95,7 @@ public class GenerateListener implements ActionListener
             currentRow = new ArrayList<String>();
         }
 
-        return new JLabel(getImage(fileName));
+        return getImage(fileName);
     }
 
     private void setDimensions(Container content)
@@ -140,10 +137,13 @@ public class GenerateListener implements ActionListener
         return fileName;
     }
 
-    private Icon getImage(String fileName)
+    private QuiltTile getImage(String fileName)
     {
         Image scaledImage;
+        int rotation;
+
         FileInputStream fis;
+
         try
         {
             fis = new FileInputStream(fileName);
@@ -154,10 +154,12 @@ public class GenerateListener implements ActionListener
             {
                 baos.write(ch);
             }
-            Image originalImage = Toolkit.getDefaultToolkit().createImage(baos.toByteArray());
 
-            // TODO: Figure out how to track the rotation of the tile so I can save it
-            scaledImage = ImageUtilities.performRandomRotation(originalImage).getScaledInstance(50, 50, 0);
+            rotation = NumberUtilities.getRandomNumber(4);
+
+            Image originalImage = Toolkit.getDefaultToolkit().createImage(baos.toByteArray());
+            Image rotatedImage = ImageUtilities.performRotation(originalImage, rotation);
+            scaledImage = rotatedImage.getScaledInstance(50, 50, 0);
         }
         catch (FileNotFoundException e)
         {
@@ -174,6 +176,7 @@ public class GenerateListener implements ActionListener
             System.err.println("Error!");
             return null;
         }
-        return new ImageIcon(scaledImage);
+        
+        return new QuiltTile(new JLabel(new ImageIcon(scaledImage)), fileName, rotation);
     }
 }

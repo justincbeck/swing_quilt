@@ -5,7 +5,6 @@ import com.beckproduct.quilt.repository.*;
 
 import java.awt.event.*;
 
-
 public class NewListener implements ActionListener
 {
     private ITileRepository tileRepository;
@@ -14,6 +13,7 @@ public class NewListener implements ActionListener
     {
         NewFrame frame = new NewFrame("New");
         frame.setVisible(true);
+
         tileRepository.test();
     }
 

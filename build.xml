@@ -8,35 +8,53 @@
 	<property name="build.dir" value="build" />
 	<property name="dist.dir" value="dist" />
 	
-	<path id="commons-lang.classpath">
-		<fileset dir="${commons-lang.dir}" includes="*.jar" />
+	<path id="commons.classpath">
+		<fileset dir="${commons.dir}" includes="*.jar" />
 	</path>
-
-    <path id="commons-logging.classpath">
-        <fileset dir="${commons-logging.dir}" includes="*.jar" />
-    </path>
-
-    <path id="hibernate-annotations.classpath">
-        <fileset dir="${hibernate-annotations.dir}" includes="*.jar" />
-    </path>
 
     <path id="hibernate.classpath">
         <fileset dir="${hibernate.dir}" includes="*.jar" />
+    </path>
+
+    <path id="hsqldb.classpath">
+        <fileset dir="${hsqldb.dir}" includes="*.jar" />
+    </path>
+
+    <path id="j2sdkee.classpath">
+        <fileset dir="${j2sdkee.dir}" includes="*.jar" />
     </path>
 
     <path id="spring.classpath">
         <fileset dir="${spring.dir}" includes="*.jar" />
     </path>
 
+    <path id="xdoclet.classpath">
+        <fileset dir="${xdoclet.dir}" includes="*.jar" />
+    </path>
+
 	<path id="main.classpath">
-		<path refid="commons-lang.classpath" />
-        <path refid="commons-logging.classpath" />
-        <path refid="hibernate-annotations.classpath" />
+		<path refid="commons.classpath" />
         <path refid="hibernate.classpath" />
+        <path refid="hsqldb.classpath" />
+        <path refid="j2sdkee.classpath" />
         <path refid="spring.classpath" />
+        <path refid="xdoclet.classpath" />
 		<pathelement path="${build.dir}" />
 	</path>
 	
+    <taskdef name="hibernatedoclet" classname="xdoclet.modules.hibernate.HibernateDocletTask">
+        <classpath refid="main.classpath" />
+    </taskdef>
+
+    <target name="generate" description="Generates Hibernate class descriptor files." depends="prepare">
+        <hibernatedoclet destdir="${src.dir}" excludedtags="@version,@author,@todo,@header" verbose="true" force="true">
+            <fileset dir="${src.dir}">
+                <include name="**/domain/*.java" />
+            </fileset>
+            <hibernate version="3.0" />
+        </hibernatedoclet>
+    </target>
+
 	<target name="prepare">
 		<tstamp />
 		<mkdir dir="${build.dir}" />
@@ -53,24 +71,17 @@
 			<classpath refid="main.classpath" />
 			<src path="${src.dir}" />
 		</javac>
-	</target>
-	
-    <!-- Eeeeeesssssaaaabrooooooke
-    <target name="package" depends="compile">
-        <jar jarfile="${dist.dir}/swing-quilt.jar"
-            basedir="${build.dir}">
-            
-            <manifest>
-                <attribute name="Main-Class" value="com.beckproduct.quilt.panel.QuiltPanel"/>
-            </manifest>
-        </jar>
-    </target> -->
+        <copy todir="${build.dir}">
+            <fileset dir="${src.dir}">
+                <include name="**/*.hbm.xml" />
+            </fileset>
+        </copy>
+    </target>
 	
 	<target name="run" depends="compile">
 		<run-main class="com.beckproduct.quilt.panel.QuiltPanel" />
 	</target>
 	
-	<!-- Execute main method within a class -->
 	<macrodef name="run-main">
 		<attribute name="class" />
 		<sequential>

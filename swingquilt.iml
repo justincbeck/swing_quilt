@@ -5,7 +5,7 @@
       <configuration>
         <fileset id="fileset1" name="My Fileset" removed="false">
           <file>file://$MODULE_DIR$/conf/applicationContext.xml</file>
-          <file>jar://$MODULE_DIR$/lib/spring-3.0.0.M2/lib/org.springframework.jdbc-3.0.0.M2.jar!/org/springframework/jdbc/support/sql-error-codes.xml</file>
+          <file>jar://$MODULE_DIR$/lib/spring-2.0.4/lib/spring.jar!/org/springframework/jdbc/support/sql-error-codes.xml</file>
         </fileset>
         <options>
           <option name="enableValidation" value="false" />
@@ -22,11 +22,12 @@
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="inheritedJdk" />
-    <orderEntry type="library" name="Commons-Lang" level="project" />
     <orderEntry type="library" name="Hibernate" level="project" />
-    <orderEntry type="library" name="Hibernate-Annotations" level="project" />
-    <orderEntry type="library" name="Spring-3.0.0.M2" level="project" />
-    <orderEntry type="library" name="Commons-Logging" level="project" />
+    <orderEntry type="library" name="Spring" level="project" />
+    <orderEntry type="library" name="HSQLDB" level="project" />
+    <orderEntry type="library" name="XDoclet" level="project" />
+    <orderEntry type="library" name="Commons" level="project" />
+    <orderEntry type="library" name="J2EE" level="project" />
     <orderEntryProperties />
   </component>
   <component name="RSpecModuleSettingsStorage">

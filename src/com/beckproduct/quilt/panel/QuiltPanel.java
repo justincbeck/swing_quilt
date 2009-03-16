@@ -8,16 +8,20 @@ import javax.swing.border.*;
 import java.awt.*;
 
 import org.springframework.context.support.*;
+import org.springframework.context.*;
 
 public class QuiltPanel extends JPanel
 {
-    public static final long serialVersionUID = 1l;   
+    public static final long serialVersionUID = 1l;
+
+    private JMenuItem newItem;
 
     public static void main(String[] args)
     {
-//        String[] contextPaths = new String[]{"conf/applicationContext.xml"};
-//        new FileSystemXmlApplicationContext(contextPaths);
+        String[] contextPaths = new String[]{"conf/applicationContext.xml"};
+        ApplicationContext applicationContext = new FileSystemXmlApplicationContext(contextPaths);
         QuiltPanel generator = new QuiltPanel();
+        generator.newItem = (JMenuItem) applicationContext.getBean("newItem");
         generator.start();
     }
 
@@ -27,10 +31,6 @@ public class QuiltPanel extends JPanel
         JFrame frame = new JFrame("Sarah's quilt generator!");
         frame.setName("mainFrame");
         frame.setSize(750, 600);
-
-        JMenuItem newItem = new JMenuItem("New");
-        newItem.setName("new");
-        newItem.addActionListener(new NewListener());
 
         JMenuItem saveItem = new JMenuItem("Save");
         saveItem.setName("save");
@@ -99,5 +99,15 @@ public class QuiltPanel extends JPanel
         content.add(jDimensionPanel);
         frame.addWindowListener(new ExitListener());
         frame.setVisible(true);
+    }
+
+    public JMenuItem getNewItem()
+    {
+        return newItem;
+    }
+
+    public void setNewItem(JMenuItem newItem)
+    {
+        this.newItem = newItem;
     }
 }

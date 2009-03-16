@@ -70,18 +70,86 @@
         </property>
     </bean>
 
-    <bean id="newItem" init-method="init"
-          class="com.beckproduct.quilt.component.NewItem">
+    <bean id="newMenuItem" init-method="init"
+          class="com.beckproduct.quilt.component.NewMeuItem">
         <property name="actionListener">
             <ref local="newListener"/>
         </property>
     </bean>
 
+    <bean id="openMenuItem" init-method="init"
+          class="com.beckproduct.quilt.component.OpenMeuItem">
+        <property name="actionListener">
+            <ref local="openListener"/>
+        </property>
+    </bean>
+
+    <bean id="saveMenuItem" init-method="init"
+          class="com.beckproduct.quilt.component.SaveMeuItem">
+        <property name="actionListener">
+            <ref local="saveListener"/>
+        </property>
+    </bean>
+
+    <bean id="saveAsMenuItem" init-method="init"
+          class="com.beckproduct.quilt.component.SaveAsMeuItem">
+        <property name="actionListener">
+            <ref local="saveAsListener"/>
+        </property>
+    </bean>
+
+    <bean id="printMenuItem" init-method="init"
+          class="com.beckproduct.quilt.component.PrintMeuItem">
+        <property name="actionListener">
+            <ref local="printListener"/>
+        </property>
+    </bean>
+
     <bean id="newListener"
           class="com.beckproduct.quilt.listener.NewListener">
+        <property name="frame">
+            <ref local="newQuiltFrame" />
+        </property>
+    </bean>
+
+    <bean id="createListener"
+          class="com.beckproduct.quilt.listener.CreateListener">
         <property name="tileRepository">
             <ref local="tileRepository"/>
         </property>
+    </bean>
+
+    <bean id="openListener"
+          class="com.beckproduct.quilt.listener.OpenListener">
+        <property name="tileRepository">
+            <ref local="tileRepository"/>
+        </property>
+    </bean>
+
+    <bean id="saveListener"
+          class="com.beckproduct.quilt.listener.SaveListener">
+        <property name="tileRepository">
+            <ref local="tileRepository"/>
+        </property>
+    </bean>
+
+    <bean id="saveAsListener"
+          class="com.beckproduct.quilt.listener.SaveAsListener">
+        <property name="tileRepository">
+            <ref local="tileRepository"/>
+        </property>
+    </bean>
+
+    <bean id="printListener"
+          class="com.beckproduct.quilt.listener.PrintListener">
+    </bean>
+
+    <bean id="newQuiltFrame"
+          class="com.beckproduct.quilt.frame.NewFrame">
+        <constructor-arg ref="createListener" />
+        <!--<property name="createListener">-->
+            <!--<ref local="createListener" />-->
+        <!--</property>-->
     </bean>
 
     <bean id="tileRepositoryTarget"

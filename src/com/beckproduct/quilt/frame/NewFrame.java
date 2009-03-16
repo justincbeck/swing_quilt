@@ -14,9 +14,12 @@ import java.awt.*;
  */
 public class NewFrame extends JFrame
 {
-    public NewFrame(String title)
+    private CreateListener createListener;
+
+    // TODO: Figure out the best way to inject the createListener rather than use a constructor-arg
+    public NewFrame(CreateListener createListener)
     {
-        super(title);
+        setTitle("New");
         setName("newFrame");
         setSize(400, 600);
         Container content = this.getContentPane();
@@ -33,11 +36,20 @@ public class NewFrame extends JFrame
         JButton go = new JButton("Go");
         go.setName("newButton");
         go.setPreferredSize(new Dimension(100, 50));
-        go.addActionListener(new CreateListener(this));
+        go.addActionListener(createListener);
 
         jButtonPanel.add(go, BorderLayout.CENTER);
 
         content.add(jButtonPanel);
-        setVisible(true);
+    }
+
+    public CreateListener getCreateListener()
+    {
+        return createListener;
+    }
+
+    public void setCreateListener(CreateListener createListener)
+    {
+        this.createListener = createListener;
     }
 }

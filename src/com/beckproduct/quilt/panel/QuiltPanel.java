@@ -14,14 +14,26 @@ public class QuiltPanel extends JPanel
 {
     public static final long serialVersionUID = 1l;
 
-    private JMenuItem newItem;
+    private JMenuItem newMenuItem;
+
+    private JMenuItem openMenuItem;
+
+    private JMenuItem saveMenuItem;
+
+    private JMenuItem saveAsMenuItem;
+
+    private JMenuItem printMenuItem;
 
     public static void main(String[] args)
     {
         String[] contextPaths = new String[]{"conf/applicationContext.xml"};
         ApplicationContext applicationContext = new FileSystemXmlApplicationContext(contextPaths);
         QuiltPanel generator = new QuiltPanel();
-        generator.newItem = (JMenuItem) applicationContext.getBean("newItem");
+        generator.newMenuItem = (JMenuItem) applicationContext.getBean("newMenuItem");
+        generator.openMenuItem = (JMenuItem) applicationContext.getBean("openMenuItem");
+        generator.saveMenuItem = (JMenuItem) applicationContext.getBean("saveMenuItem");
+        generator.saveAsMenuItem = (JMenuItem) applicationContext.getBean("saveAsMenuItem");
+        generator.printMenuItem = (JMenuItem) applicationContext.getBean("printMenuItem");
         generator.start();
     }
 
@@ -32,23 +44,12 @@ public class QuiltPanel extends JPanel
         frame.setName("mainFrame");
         frame.setSize(750, 600);
 
-        JMenuItem saveItem = new JMenuItem("Save");
-        saveItem.setName("save");
-        saveItem.addActionListener(new SaveListener());
-
-        JMenuItem saveAsItem = new JMenuItem("Save As");
-        saveAsItem.setName("saveAs");
-        saveAsItem.addActionListener(new SaveAsListener());
-
-        JMenuItem printItem = new JMenuItem("Print");
-        printItem.setName("print");
-        printItem.addActionListener(new PrintListener());
-
         JMenu fileMenu = new JMenu("File");
-        fileMenu.add(newItem);
-        fileMenu.add(saveItem);
-        fileMenu.add(saveAsItem);
-        fileMenu.add(printItem);
+        fileMenu.add(newMenuItem);
+        fileMenu.add(openMenuItem);
+        fileMenu.add(saveMenuItem);
+        fileMenu.add(saveAsMenuItem);
+        fileMenu.add(printMenuItem);
 
         JMenuBar menuBar = new JMenuBar();
         menuBar.add(fileMenu);
@@ -101,13 +102,53 @@ public class QuiltPanel extends JPanel
         frame.setVisible(true);
     }
 
-    public JMenuItem getNewItem()
+    public JMenuItem getNewMenuItem()
     {
-        return newItem;
+        return newMenuItem;
     }
 
-    public void setNewItem(JMenuItem newItem)
+    public void setNewItem(JMenuItem newMenuItem)
     {
-        this.newItem = newItem;
+        this.newMenuItem = newMenuItem;
+    }
+
+    public JMenuItem getOpenMenuItem()
+    {
+        return openMenuItem;
+    }
+
+    public void setOpenMenuItem(JMenuItem openMenuItem)
+    {
+        this.openMenuItem = openMenuItem;
+    }
+
+    public JMenuItem getSaveMenuItem()
+    {
+        return saveMenuItem;
+    }
+
+    public void setSaveMenuItem(JMenuItem saveMenuItem)
+    {
+        this.saveMenuItem = saveMenuItem;
+    }
+
+    public JMenuItem getSaveAsMenuItem()
+    {
+        return saveAsMenuItem;
+    }
+
+    public void setSaveAsMenuItem(JMenuItem saveAsMenuItem)
+    {
+        this.saveAsMenuItem = saveAsMenuItem;
+    }
+
+    public JMenuItem getPrintMenuItem()
+    {
+        return printMenuItem;
+    }
+
+    public void setPrintMenuItem(JMenuItem printMenuItem)
+    {
+        this.printMenuItem = printMenuItem;
     }
 }

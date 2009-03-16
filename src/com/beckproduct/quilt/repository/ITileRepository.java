@@ -19,6 +19,4 @@ public interface ITileRepository
     public Object update(Object tile);
 
     public void delete(Serializable id);
-
-    public void test();
 }

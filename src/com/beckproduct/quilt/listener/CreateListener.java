@@ -1,7 +1,11 @@
 package com.beckproduct.quilt.listener;
 
-import javax.swing.*;
 import java.awt.event.*;
+import java.awt.*;
+
+import com.beckproduct.quilt.repository.*;
+
+import javax.swing.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -11,16 +15,22 @@ import java.awt.event.*;
  */
 public class CreateListener implements ActionListener
 {
-    private JFrame frame;
-
-    public CreateListener(JFrame frame)
-    {
-        this.frame = frame;
-    }
+    private ITileRepository tileRepository;
 
     public void actionPerformed(ActionEvent event)
     {
-        System.out.println("Create it!");
-        frame.setVisible(false);
+        tileRepository.create(null);
+
+        // TODO: Find out the best way to close the new Quilt window
+    }
+
+    public ITileRepository getTileRepository()
+    {
+        return tileRepository;
+    }
+
+    public void setTileRepository(ITileRepository tileRepository)
+    {
+        this.tileRepository = tileRepository;
     }
 }

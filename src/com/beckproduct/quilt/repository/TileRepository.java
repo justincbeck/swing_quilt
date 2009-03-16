@@ -1,6 +1,5 @@
 package com.beckproduct.quilt.repository;
 
-import com.beckproduct.quilt.domain.*;
 import org.springframework.orm.hibernate3.support.*;
 
 import java.io.*;
@@ -15,31 +14,32 @@ public class TileRepository extends HibernateDaoSupport implements ITileReposito
 {
     public void create(Object instance)
     {
-        this.update(instance);
+        System.out.println("Create!");
+//        this.update(instance);
     }
 
     public Object getInstance(Serializable id)
     {
-        return getHibernateTemplate().get(QuiltTile.class, id);
+        System.out.println("Get!");
+        return null;
+//        return getHibernateTemplate().get(QuiltTile.class, id);
     }
 
     public Object update(Object instance)
     {
-        QuiltTile tile = (QuiltTile) instance;
-        getHibernateTemplate().saveOrUpdate(tile);
-        getHibernateTemplate().flush();
-        return tile;
+        System.out.println("Update!");
+        return null;
+//        QuiltTile tile = (QuiltTile) instance;
+//        getHibernateTemplate().saveOrUpdate(tile);
+//        getHibernateTemplate().flush();
+//        return tile;
     }
 
     public void delete(Serializable id)
     {
-        QuiltTile target = (QuiltTile) this.getInstance(id);
-        getHibernateTemplate().delete(target);
-        getHibernateTemplate().flush();
-    }
-
-    public void test()
-    {
-        System.out.println("Test");
+        System.out.println("Delete!");
+//        QuiltTile target = (QuiltTile) this.getInstance(id);
+//        getHibernateTemplate().delete(target);
+//        getHibernateTemplate().flush();
     }
 }

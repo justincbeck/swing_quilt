@@ -52,7 +52,7 @@ public class GenerateListener implements ActionListener
         TitledBorder titledBorder = BorderFactory.createTitledBorder(border, "Your quilt Madam!");
         jQuiltPanel.setBorder(titledBorder);
 
-        JPanel quilt = new JPanel(new GridLayout(this.rows, this.cols, 0, 0));
+        Quilt quilt = new Quilt(new GridLayout(this.rows, this.cols, 0, 0));
         for (int row = 0; row < this.rows; row++)
         {
             for (int col = 0; col < this.cols; col++)

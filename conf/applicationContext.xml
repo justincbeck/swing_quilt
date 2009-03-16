@@ -26,6 +26,7 @@
         </property>
         <property name="mappingResources">
             <list>
+                <value>com/beckproduct/quilt/domain/Quilt.hbm.xml</value>
                 <value>com/beckproduct/quilt/domain/QuiltTile.hbm.xml</value>
             </list>
         </property>
@@ -70,36 +71,71 @@
         </property>
     </bean>
 
+    <bean id="mainFrame"
+          class="com.beckproduct.quilt.frame.MainFrame">
+        <constructor-arg value="Sarah's quilt generator!" />
+        <constructor-arg value="mainFrame" />
+        <property name="mainMenuBar">
+            <ref local="mainMenuBar" />
+        </property>
+    </bean>
+
+    <bean id="mainMenuBar"
+          class="com.beckproduct.quilt.menu.MainMenuBar" >
+        <property name="fileMenu">
+            <ref local="fileMenu" />
+        </property>
+    </bean>
+
+    <bean id="fileMenu" init-method="init"
+          class="com.beckproduct.quilt.menu.FileMenu" >
+        <property name="newMenuItem">
+            <ref local="newMenuItem" />
+        </property>
+        <property name="openMenuItem">
+            <ref local="openMenuItem" />
+        </property>
+        <property name="saveMenuItem">
+            <ref local="saveMenuItem" />
+        </property>
+        <property name="saveAsMenuItem">
+            <ref local="saveAsMenuItem" />
+        </property>
+        <property name="printMenuItem">
+            <ref local="printMenuItem" />
+        </property>
+    </bean>
+
     <bean id="newMenuItem" init-method="init"
-          class="com.beckproduct.quilt.component.NewMeuItem">
+          class="com.beckproduct.quilt.menu.item.NewMeuItem">
         <property name="actionListener">
             <ref local="newListener"/>
         </property>
     </bean>
 
     <bean id="openMenuItem" init-method="init"
-          class="com.beckproduct.quilt.component.OpenMeuItem">
+          class="com.beckproduct.quilt.menu.item.OpenMeuItem">
         <property name="actionListener">
             <ref local="openListener"/>
         </property>
     </bean>
 
     <bean id="saveMenuItem" init-method="init"
-          class="com.beckproduct.quilt.component.SaveMeuItem">
+          class="com.beckproduct.quilt.menu.item.SaveMeuItem">
         <property name="actionListener">
             <ref local="saveListener"/>
         </property>
     </bean>
 
     <bean id="saveAsMenuItem" init-method="init"
-          class="com.beckproduct.quilt.component.SaveAsMeuItem">
+          class="com.beckproduct.quilt.menu.item.SaveAsMeuItem">
         <property name="actionListener">
             <ref local="saveAsListener"/>
         </property>
     </bean>
 
     <bean id="printMenuItem" init-method="init"
-          class="com.beckproduct.quilt.component.PrintMeuItem">
+          class="com.beckproduct.quilt.menu.item.PrintMeuItem">
         <property name="actionListener">
             <ref local="printListener"/>
         </property>

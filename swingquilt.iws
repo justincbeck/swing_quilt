@@ -99,10 +99,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GenerateListener.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="GenerateListener.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/beckproduct/quilt/listener/GenerateListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="0" selection-start="1677" selection-end="1677" vertical-scroll-proportion="0.33333334">
+            <state line="60" column="0" selection-start="1677" selection-end="1677" vertical-scroll-proportion="1.7">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ITileRepository.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/beckproduct/quilt/repository/ITileRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="39" selection-start="372" selection-end="372" vertical-scroll-proportion="0.576">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TileRepository.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/beckproduct/quilt/repository/TileRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="8" selection-start="288" selection-end="365" vertical-scroll-proportion="0.448">
               <folding />
             </state>
           </provider>
@@ -214,6 +232,32 @@
         </PATH_ELEMENT>
         <PATH_ELEMENT>
           <option name="myItemId" value="PsiDirectory:/Users/jbeck/workspace/swingquilt/src/com/beckproduct/quilt/utilities" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="swingquilt" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="swingquilt" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/Users/jbeck/workspace/swingquilt" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/Users/jbeck/workspace/swingquilt/src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/Users/jbeck/workspace/swingquilt/src/com/beckproduct/quilt" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:/Users/jbeck/workspace/swingquilt/src/com/beckproduct/quilt/repository" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -774,7 +818,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/beckproduct/quilt/listener/GenerateListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="0" selection-start="1677" selection-end="1677" vertical-scroll-proportion="0.33333334">
+        <state line="60" column="0" selection-start="1677" selection-end="1677" vertical-scroll-proportion="1.7">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/beckproduct/quilt/repository/ITileRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="39" selection-start="372" selection-end="372" vertical-scroll-proportion="0.576">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/beckproduct/quilt/repository/TileRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="8" selection-start="288" selection-end="365" vertical-scroll-proportion="0.448">
           <folding />
         </state>
       </provider>

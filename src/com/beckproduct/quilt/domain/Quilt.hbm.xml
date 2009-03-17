@@ -26,17 +26,24 @@
             </generator>
         </id>
 
-        <list
+        <set
             name="tiles"
             lazy="false"
             cascade="all"
+            sort="unsorted"
+            order-by="time"
         >
 
+            <key
+                column="quilt_id"
+            >
+            </key>
+
             <one-to-many
-                  class="com.beckproduct.quilt.domain.QuiltTile"
+                  class="com.beckproduct.quilt.domain.Quilt"
             />
 
-        </list>
+        </set>
 
         <!--
             To add non XDoclet property mappings, create a file named

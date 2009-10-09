@@ -1,8 +1,10 @@
 package com.beckproduct.quilt.domain;
 
 import javax.swing.*;
-import java.awt.*;
+import javax.persistence.*;
+
 import java.util.*;
+import java.awt.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -12,22 +14,28 @@ import java.util.*;
  *
  * The Quilt - The object that contains the all the tiles
  * <p>
- *
- * @hibernate.class table="quilt" lazy="false"
  */
+
+@Entity
+@Table(name = "quilts")
 public class Quilt extends JPanel
 {
-    private String id;
+    @Id
+    @GeneratedValue
+    private Long id;
 
-    public LinkedHashSet tiles;
+    private String name = "test";
+
+    @OneToMany(targetEntity = QuiltTile.class, cascade = CascadeType.ALL)
+    public Set<QuiltTile> tiles;
 
     public Quilt(LayoutManager layoutManager)
     {
         super(layoutManager);
-        this.tiles = new LinkedHashSet();
+        this.tiles = new LinkedHashSet<QuiltTile>();
     }
 
-    public Component add(Component component)
+    public Component add(QuiltTile component)
     {
         tiles.add(component);
         super.add(component);
@@ -36,9 +44,8 @@ public class Quilt extends JPanel
 
     /**
      * @return Returns the id.
-     * @hibernate.id generator-class="uuid.hex"
      */
-    public String getId()
+    public Long getId()
     {
         return id;
     }
@@ -47,25 +54,25 @@ public class Quilt extends JPanel
      * @param id
      *            The Id to set.
      */
-    public void setId(String id)
+    public void setId(Long id)
     {
         this.id = id;
     }
 
     /**
-     * @hibernate.set name="tiles" lazy="false" cascade="all" order-by="time"
-     * @hibernate.collection-key column="quilt_id"
-     * @hibernate.collection-one-to-many class="com.beckproduct.quilt.domain.Quilt"
-     *
-     * @return Returns the tiles.
+     * @return Returns the name.
      */
-    public LinkedHashSet getTiles()
+    public String getName()
     {
-        return tiles;
+        return name;
     }
 
-    public void setTiles(LinkedHashSet tiles)
+    /**
+     * @param name
+     *            The name to set.
+     */
+    public void setName(String name)
     {
-        this.tiles = tiles;
+        this.name = name;
     }
 }

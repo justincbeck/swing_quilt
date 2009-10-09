@@ -2,6 +2,7 @@ package com.beckproduct.quilt.domain;
 
 
 import javax.swing.*;
+import javax.persistence.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -11,12 +12,15 @@ import javax.swing.*;
  *
  * The QuiltTile - The object that contains the metadata about the file
  * <p>
- *
- * @hibernate.class table="tile" lazy="false"
  */
+
+@Entity
+@Table(name = "tiles")
 public class QuiltTile extends JLabel
 {
-    private String id;
+    @Id
+    @GeneratedValue
+    private Long id;
 
     private int rotation;
 
@@ -31,9 +35,8 @@ public class QuiltTile extends JLabel
 
     /**
      * @return Returns the id.
-     * @hibernate.id generator-class="uuid.hex"
      */
-    public String getId()
+    public Long getId()
     {
         return id;
     }
@@ -42,15 +45,12 @@ public class QuiltTile extends JLabel
      * @param id
      *            The Id to set.
      */
-    public void setId(String id)
+    public void setId(Long id)
     {
         this.id = id;
     }
 
     /**
-     * @hibernate.property column="rotation" type="integer" length="1"
-     *                     unique="false"
-     *
      * @return Returns the filename.
      */
     public int getRotation()
@@ -58,15 +58,16 @@ public class QuiltTile extends JLabel
         return rotation;
     }
 
+    /**
+     * @param rotation
+     *            The rotation to set.
+     */
     public void setRotation(int rotation)
     {
         this.rotation = rotation;
     }
 
     /**
-     * @hibernate.property column="filename" type="string" length="255"
-     *                     unique="false"
-     *
      * @return Returns the filename.
      */
     public String getFileName()
@@ -74,6 +75,10 @@ public class QuiltTile extends JLabel
         return fileName;
     }
 
+    /**
+     * @param fileName
+     *            The fileName to set.
+     */
     public void setFileName(String fileName)
     {
         this.fileName = fileName;

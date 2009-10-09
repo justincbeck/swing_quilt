@@ -5,27 +5,27 @@
 <beans>
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
-        <property name="url" value="jdbc:hsqldb:mem:hibernate_annotations"/>
-        <property name="username" value="sa"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost/swing_quilt"/>
+        <property name="username" value="root"/>
         <property name="password" value=""/>
     </bean>
 
     <bean id="factory"
-          class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+          class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
         <property name="dataSource">
             <ref local="dataSource"/>
         </property>
-        <property name="mappingResources">
+        <property name="annotatedClasses">
             <list>
-                <value>com/beckproduct/quilt/domain/Quilt.hbm.xml</value>
-                <value>com/beckproduct/quilt/domain/QuiltTile.hbm.xml</value>
+                <value>com.beckproduct.quilt.domain.Quilt</value>
+                <value>com.beckproduct.quilt.domain.QuiltTile</value>
             </list>
         </property>
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">
-                    org.hibernate.dialect.HSQLDialect
+                    org.hibernate.dialect.MySQL5Dialect
                 </prop>
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
             </props>
@@ -144,6 +144,7 @@
 
     <bean id="saveListener"
           class="com.beckproduct.quilt.listener.SaveListener">
+        <constructor-arg ref="mainFrame" />
         <property name="quiltRepository">
             <ref local="quiltRepository"/>
         </property>

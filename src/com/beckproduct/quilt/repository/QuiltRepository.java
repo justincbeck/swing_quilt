@@ -3,6 +3,10 @@ package com.beckproduct.quilt.repository;
 import org.springframework.orm.hibernate3.support.*;
 
 import java.io.*;
+import java.awt.*;
+import java.util.*;
+
+import com.beckproduct.quilt.domain.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -14,8 +18,16 @@ public class QuiltRepository extends HibernateDaoSupport implements IQuiltReposi
 {
     public void create(Object instance)
     {
-        System.out.println("Create!");
-//        this.update(instance);
+        Quilt quilt = (Quilt) instance;
+        Iterator i = quilt.tiles.iterator();
+        while(i.hasNext())
+        {
+            QuiltTile tile = (QuiltTile) i.next();
+            tile.setId(1l);
+        }
+        quilt.setId(1l);
+        getHibernateTemplate().save(quilt);
+        getHibernateTemplate().flush();
     }
 
     public Object getInstance(Serializable id)
@@ -27,12 +39,10 @@ public class QuiltRepository extends HibernateDaoSupport implements IQuiltReposi
 
     public Object update(Object instance)
     {
-        System.out.println("Update!");
-        return null;
-//        QuiltTile tile = (QuiltTile) instance;
-//        getHibernateTemplate().saveOrUpdate(tile);
-//        getHibernateTemplate().flush();
-//        return tile;
+        Quilt quilt = (Quilt) instance;
+        getHibernateTemplate().update(quilt);
+        getHibernateTemplate().flush();
+        return quilt;
     }
 
     public void delete(Serializable id)

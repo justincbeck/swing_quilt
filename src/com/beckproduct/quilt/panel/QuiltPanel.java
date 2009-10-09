@@ -10,7 +10,6 @@ import java.awt.*;
 import org.springframework.context.support.*;
 import org.springframework.context.*;
 
-// I need to add a comment so I can check something in...  I'll remove it, I promise.
 public class QuiltPanel extends JPanel
 {
     public static final long serialVersionUID = 1l;
@@ -23,11 +22,8 @@ public class QuiltPanel extends JPanel
         ApplicationContext applicationContext = new FileSystemXmlApplicationContext(contextPaths);
 
         QuiltPanel generator = new QuiltPanel();
-        
-        // Frame
         generator.mainFrame = (JFrame) applicationContext.getBean("mainFrame");
 
-        // Run it!
         generator.start();
     }
 

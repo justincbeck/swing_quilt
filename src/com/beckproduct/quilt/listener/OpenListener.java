@@ -7,21 +7,21 @@ import java.awt.event.*;
 
 public class OpenListener implements ActionListener
 {
-    private ITileRepository tileRepository;
+    private IQuiltRepository quiltRepository;
 
     public void actionPerformed(ActionEvent event)
     {
-        tileRepository.getInstance(null);
+        quiltRepository.getInstance(null);
         // TODO: Write the OpenListner.actionPerformed(ActionEvent event) method
     }
 
-    public ITileRepository getTileRepository()
+    public IQuiltRepository getQuiltRepository()
     {
-        return tileRepository;
+        return quiltRepository;
     }
 
-    public void setTileRepository(ITileRepository tileRepository)
+    public void setQuiltRepository(IQuiltRepository quiltRepository)
     {
-        this.tileRepository = tileRepository;
+        this.quiltRepository = quiltRepository;
     }
 }

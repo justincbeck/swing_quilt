@@ -7,10 +7,10 @@ import java.io.*;
 /**
  * Created by IntelliJ IDEA.
  * User: jbeck
- * Date: Mar 15, 2009
- * Time: 11:28:56 AM
+ * Date: Oct 8, 2009
+ * Time: 1:09:07 PM
  */
-public class TileRepository extends HibernateDaoSupport implements ITileRepository
+public class QuiltRepository extends HibernateDaoSupport implements IQuiltRepository
 {
     public void create(Object instance)
     {
@@ -36,6 +36,14 @@ public class TileRepository extends HibernateDaoSupport implements ITileReposito
     }
 
     public void delete(Serializable id)
+    {
+        System.out.println("Delete!");
+//        QuiltTile target = (QuiltTile) this.getInstance(id);
+//        getHibernateTemplate().delete(target);
+//        getHibernateTemplate().flush();
+    }
+
+    public void delete(Object id)
     {
         System.out.println("Delete!");
 //        QuiltTile target = (QuiltTile) this.getInstance(id);

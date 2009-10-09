@@ -15,22 +15,22 @@ import javax.swing.*;
  */
 public class CreateListener implements ActionListener
 {
-    private ITileRepository tileRepository;
+    private IQuiltRepository quiltRepository;
 
     public void actionPerformed(ActionEvent event)
     {
-        tileRepository.create(null);
+        quiltRepository.create(null);
 
         // TODO: Find out the best way to close the new Quilt window
     }
 
-    public ITileRepository getTileRepository()
+    public IQuiltRepository getQuiltRepository()
     {
-        return tileRepository;
+        return quiltRepository;
     }
 
-    public void setTileRepository(ITileRepository tileRepository)
+    public void setQuiltRepository(IQuiltRepository quiltRepository)
     {
-        this.tileRepository = tileRepository;
+        this.quiltRepository = quiltRepository;
     }
 }

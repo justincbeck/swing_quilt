@@ -5,18 +5,10 @@
 <beans>
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName">
-            <value>org.hsqldb.jdbcDriver</value>
-        </property>
-        <property name="url">
-            <value>jdbc:hsqldb:mem:hibernate_annotations</value>
-        </property>
-        <property name="username">
-            <value>sa</value>
-        </property>
-        <property name="password">
-            <value></value>
-        </property>
+        <property name="driverClassName" value="org.hsqldb.jdbcDriver"/>
+        <property name="url" value="jdbc:hsqldb:mem:hibernate_annotations"/>
+        <property name="username" value="sa"/>
+        <property name="password" value=""/>
     </bean>
 
     <bean id="factory"
@@ -47,18 +39,6 @@
         </property>
     </bean>
 
-    <bean id="txProxyServiceTemplate" abstract="true"
-          class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
-        <property name="transactionManager">
-            <ref local="transactionManager"/>
-        </property>
-        <property name="transactionAttributes">
-            <props>
-                <prop key="*">PROPAGATION_REQUIRES_NEW</prop>
-            </props>
-        </property>
-    </bean>
-
     <bean id="txProxyPersistenceTemplate" abstract="true"
           class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
         <property name="transactionManager">
@@ -66,7 +46,7 @@
         </property>
         <property name="transactionAttributes">
             <props>
-                <prop key="*">PROPAGATION_REQUIRED</prop>
+                <prop key="*">PROPAGATION_REQUIRES_NEW</prop>
             </props>
         </property>
     </bean>
@@ -150,29 +130,29 @@
 
     <bean id="createListener"
           class="com.beckproduct.quilt.listener.CreateListener">
-        <property name="tileRepository">
-            <ref local="tileRepository"/>
+        <property name="quiltRepository">
+            <ref local="quiltRepository"/>
         </property>
     </bean>
 
     <bean id="openListener"
           class="com.beckproduct.quilt.listener.OpenListener">
-        <property name="tileRepository">
-            <ref local="tileRepository"/>
+        <property name="quiltRepository">
+            <ref local="quiltRepository"/>
         </property>
     </bean>
 
     <bean id="saveListener"
           class="com.beckproduct.quilt.listener.SaveListener">
-        <property name="tileRepository">
-            <ref local="tileRepository"/>
+        <property name="quiltRepository">
+            <ref local="quiltRepository"/>
         </property>
     </bean>
 
     <bean id="saveAsListener"
           class="com.beckproduct.quilt.listener.SaveAsListener">
-        <property name="tileRepository">
-            <ref local="tileRepository"/>
+        <property name="quiltRepository">
+            <ref local="quiltRepository"/>
         </property>
     </bean>
 
@@ -183,21 +163,18 @@
     <bean id="newQuiltFrame"
           class="com.beckproduct.quilt.frame.NewFrame">
         <constructor-arg ref="createListener" />
-        <!--<property name="createListener">-->
-            <!--<ref local="createListener" />-->
-        <!--</property>-->
     </bean>
 
-    <bean id="tileRepositoryTarget"
-          class="com.beckproduct.quilt.repository.TileRepository">
+    <bean id="quiltRepositoryTarget"
+          class="com.beckproduct.quilt.repository.QuiltRepository">
         <property name="sessionFactory">
             <ref local="factory"/>
         </property>
     </bean>
 
-    <bean id="tileRepository" parent="txProxyPersistenceTemplate">
+    <bean id="quiltRepository" parent="txProxyPersistenceTemplate">
         <property name="target">
-            <ref local="tileRepositoryTarget"/>
+            <ref local="quiltRepositoryTarget"/>
         </property>
     </bean>
 </beans>

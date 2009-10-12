@@ -26,13 +26,6 @@ public class QuiltTile extends JLabel
 
     private String fileName;
 
-    public QuiltTile(ImageIcon image, String fileName, int rotation)
-    {
-        super(image);
-        this.fileName = fileName;
-        this.rotation = rotation;
-    }
-
     /**
      * @return Returns the id.
      */
@@ -48,6 +41,23 @@ public class QuiltTile extends JLabel
     public void setId(Long id)
     {
         this.id = id;
+    }
+
+    /**
+     * @return Returns the image.
+     */
+    public Icon getImage()
+    {
+        return super.getIcon();
+    }
+
+    /**
+     * @param image
+     *            The image to set.
+     */
+    public void setImage(ImageIcon image)
+    {
+        super.setIcon(image);
     }
 
     /**

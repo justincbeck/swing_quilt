@@ -52,7 +52,9 @@ public class GenerateListener implements ActionListener
         TitledBorder titledBorder = BorderFactory.createTitledBorder(border, "Your quilt Madam!");
         jQuiltPanel.setBorder(titledBorder);
 
-        Quilt quilt = new Quilt(new GridLayout(this.rows, this.cols, 0, 0));
+        Quilt quilt = new Quilt();
+        quilt.setLayoutManager(new GridLayout(this.rows, this.cols, 0, 0));
+        
         for (int row = 0; row < this.rows; row++)
         {
             for (int col = 0; col < this.cols; col++)
@@ -171,7 +173,12 @@ public class GenerateListener implements ActionListener
             System.err.println("Error reading file: " + fileName);
             return null;
         }
-        
-        return new QuiltTile(new ImageIcon(scaledImage), fileName, rotation);
+
+        QuiltTile tile = new QuiltTile();
+        tile.setImage(new ImageIcon(scaledImage));
+        tile.setFileName(fileName);
+        tile.setRotation(rotation);
+
+        return tile;
     }
 }

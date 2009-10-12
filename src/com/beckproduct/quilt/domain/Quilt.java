@@ -27,19 +27,23 @@ public class Quilt extends JPanel
     private String name = "test";
 
     @OneToMany(targetEntity = QuiltTile.class, cascade = CascadeType.ALL)
-    public Set<QuiltTile> tiles;
-
-    public Quilt(LayoutManager layoutManager)
-    {
-        super(layoutManager);
-        this.tiles = new LinkedHashSet<QuiltTile>();
-    }
+    public Set<QuiltTile> tiles = new LinkedHashSet<QuiltTile>();
 
     public Component add(QuiltTile component)
     {
         tiles.add(component);
         super.add(component);
         return component;
+    }
+
+    public void setLayoutManager(LayoutManager layoutManager)
+    {
+        super.setLayout(layoutManager);
+    }
+
+    public LayoutManager getLayoutManager()
+    {
+        return super.getLayout();
     }
 
     /**

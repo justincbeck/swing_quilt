@@ -1,14 +1,9 @@
 package com.beckproduct.quilt.repository;
 
-import org.springframework.orm.hibernate3.support.*;
-
-import java.io.*;
-import java.awt.*;
-import java.util.*;
-
 import com.beckproduct.quilt.domain.*;
 
 import javax.persistence.*;
+import java.io.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -23,45 +18,62 @@ public class QuiltRepository implements IQuiltRepository
     public void create(Object instance)
     {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-        EntityTransaction tx = entityManager.getTransaction();
-        tx.begin();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
 
         Quilt quilt = (Quilt) instance;
         entityManager.persist(quilt);
 
-        tx.commit();
+        transaction.commit();
         entityManager.close();
     }
 
     public Object getInstance(Serializable id)
     {
-        System.out.println("Get!");
-        return null;
-//        return getHibernateTemplate().get(QuiltTile.class, id);
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+
+        Quilt quilt =
+            (Quilt) entityManager.createQuery("select q from Quilt q where q.id = " + id).getSingleResult();
+
+        transaction.commit();
+        entityManager.close();
+
+        return quilt;
     }
 
     public Object update(Object instance)
     {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+
         Quilt quilt = (Quilt) instance;
-//        getHibernateTemplate().update(quilt);
-//        getHibernateTemplate().flush();
+        entityManager.merge(quilt);
+
+        transaction.commit();
+        entityManager.close();
+
         return quilt;
     }
 
     public void delete(Serializable id)
     {
-        System.out.println("Delete!");
-//        QuiltTile target = (QuiltTile) this.getInstance(id);
-//        getHibernateTemplate().delete(target);
-//        getHibernateTemplate().flush();
+        Object q = this.getInstance(id);
+        this.delete(q);
     }
 
-    public void delete(Object id)
+    public void delete(Object instance)
     {
-        System.out.println("Delete!");
-//        QuiltTile target = (QuiltTile) this.getInstance(id);
-//        getHibernateTemplate().delete(target);
-//        getHibernateTemplate().flush();
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+
+        entityManager.remove(instance);
+
+        transaction.commit();
+        entityManager.close();
     }
 
     public EntityManagerFactory getEntityManagerFactory()

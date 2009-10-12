@@ -23,11 +23,7 @@ public class SaveListener implements ActionListener
     {
         Container content = frame.getContentPane();
         JPanel jQuiltPanel = null;
-//        if (content.getComponents().length == 3)
-            jQuiltPanel = (JPanel) content.getComponent(2);
-//        else
-//            return;
-
+        jQuiltPanel = (JPanel) content.getComponent(2);
         Quilt quilt = (Quilt) jQuiltPanel.getComponent(0);
 
         quiltRepository.create(quilt);

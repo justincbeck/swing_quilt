@@ -77,7 +77,7 @@
         description="Exports a generated schema to DB and file">
 
         <hibernatetool destdir="${basedir}">
-            <classpath path="${build.dir}"/>
+            <classpath refid="main.classpath"/>
             <jpaconfiguration/> <!-- Use META-INF/persistence.xml -->
             <hbm2ddl
                 drop="true"

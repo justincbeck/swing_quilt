@@ -8,26 +8,29 @@ import java.util.*;
 
 import com.beckproduct.quilt.domain.*;
 
+import javax.persistence.*;
+
 /**
  * Created by IntelliJ IDEA.
  * User: jbeck
  * Date: Oct 8, 2009
  * Time: 1:09:07 PM
  */
-public class QuiltRepository extends HibernateDaoSupport implements IQuiltRepository
+public class QuiltRepository implements IQuiltRepository
 {
+    private EntityManagerFactory entityManagerFactory;
+
     public void create(Object instance)
     {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction tx = entityManager.getTransaction();
+        tx.begin();
+
         Quilt quilt = (Quilt) instance;
-        Iterator i = quilt.tiles.iterator();
-        while(i.hasNext())
-        {
-            QuiltTile tile = (QuiltTile) i.next();
-            tile.setId(1l);
-        }
-        quilt.setId(1l);
-        getHibernateTemplate().save(quilt);
-        getHibernateTemplate().flush();
+        entityManager.persist(quilt);
+
+        tx.commit();
+        entityManager.close();
     }
 
     public Object getInstance(Serializable id)
@@ -40,8 +43,8 @@ public class QuiltRepository extends HibernateDaoSupport implements IQuiltReposi
     public Object update(Object instance)
     {
         Quilt quilt = (Quilt) instance;
-        getHibernateTemplate().update(quilt);
-        getHibernateTemplate().flush();
+//        getHibernateTemplate().update(quilt);
+//        getHibernateTemplate().flush();
         return quilt;
     }
 
@@ -59,5 +62,15 @@ public class QuiltRepository extends HibernateDaoSupport implements IQuiltReposi
 //        QuiltTile target = (QuiltTile) this.getInstance(id);
 //        getHibernateTemplate().delete(target);
 //        getHibernateTemplate().flush();
+    }
+
+    public EntityManagerFactory getEntityManagerFactory()
+    {
+        return entityManagerFactory;
+    }
+
+    public void setEntityManagerFactory(EntityManagerFactory entityManagerFactory)
+    {
+        this.entityManagerFactory = entityManagerFactory;
     }
 }

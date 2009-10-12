@@ -11,44 +11,8 @@
         <property name="password" value=""/>
     </bean>
 
-    <bean id="factory"
-          class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
-        <property name="dataSource">
-            <ref local="dataSource"/>
-        </property>
-        <property name="annotatedClasses">
-            <list>
-                <value>com.beckproduct.quilt.domain.Quilt</value>
-                <value>com.beckproduct.quilt.domain.QuiltTile</value>
-            </list>
-        </property>
-        <property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.dialect">
-                    org.hibernate.dialect.MySQL5Dialect
-                </prop>
-                <prop key="hibernate.hbm2ddl.auto">update</prop>
-            </props>
-        </property>
-    </bean>
-
-    <bean id="transactionManager"
-          class="org.springframework.orm.hibernate3.HibernateTransactionManager">
-        <property name="sessionFactory">
-            <ref local="factory"/>
-        </property>
-    </bean>
-
-    <bean id="txProxyPersistenceTemplate" abstract="true"
-          class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
-        <property name="transactionManager">
-            <ref local="transactionManager"/>
-        </property>
-        <property name="transactionAttributes">
-            <props>
-                <prop key="*">PROPAGATION_REQUIRES_NEW</prop>
-            </props>
-        </property>
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+ 		<property name="persistenceUnitName" value="swing_quilt"/>
     </bean>
 
     <bean id="mainFrame"
@@ -166,16 +130,10 @@
         <constructor-arg ref="createListener" />
     </bean>
 
-    <bean id="quiltRepositoryTarget"
+    <bean id="quiltRepository"
           class="com.beckproduct.quilt.repository.QuiltRepository">
-        <property name="sessionFactory">
-            <ref local="factory"/>
-        </property>
-    </bean>
-
-    <bean id="quiltRepository" parent="txProxyPersistenceTemplate">
-        <property name="target">
-            <ref local="quiltRepositoryTarget"/>
+        <property name="entityManagerFactory">
+            <ref local="entityManagerFactory"/>
         </property>
     </bean>
 </beans>

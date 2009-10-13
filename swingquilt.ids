@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <DataSource DataSourceSourceName="LOCAL">
+    <option name="DRIVER_CLASS" value="com.mysql.jdbc.Driver" />
+    <option name="DATABASE_URL" value="jdbc:mysql://localhost/swing_quilt" />
+    <option name="DRIVER_PATH" />
+    <option name="DATBASE_USERNAME" value="root" />
+    <option name="ENCODED_DATABASE_PASSWORD" value="" />
+    <option name="DEFAULT_SCHEMA_NAME" value="swing_quilt" />
+    <option name="TABLE_PATTERN" value="" />
+    <option name="UUID" value="dab714b2-b0ff-4ea1-b6b1-fa84b830a56e" />
+    <option name="NAME" value="DataSource" />
+    <option name="DATABASE_PRODUCT_NAME" value="MySQL" />
+    <option name="DATABASE_PRODUCT_VERSION" value="5.1.37-log" />
+    <TABLE_DATA>
+      <option name="NAME" value="quilts" />
+      <option name="SCHEMA" />
+      <option name="CATALOG" value="swing_quilt" />
+      <option name="TYPE" value="TABLE" />
+      <FIELD_ELEMENT>
+        <option name="NAME" value="id" />
+        <option name="SQL_TYPE" value="BIGINT" />
+        <option name="JDBC_TYPE" value="-5" />
+        <option name="TYPE" />
+        <option name="PRIMARY" value="true" />
+        <option name="LENGTH" value="19" />
+        <option name="PRECISION" value="0" />
+        <option name="NULLABLE" value="false" />
+      </FIELD_ELEMENT>
+      <FIELD_ELEMENT>
+        <option name="NAME" value="name" />
+        <option name="SQL_TYPE" value="VARCHAR" />
+        <option name="JDBC_TYPE" value="12" />
+        <option name="TYPE" />
+        <option name="PRIMARY" value="false" />
+        <option name="LENGTH" value="255" />
+        <option name="PRECISION" value="0" />
+        <option name="NULLABLE" value="true" />
+      </FIELD_ELEMENT>
+      <FIELD_ELEMENT>
+        <option name="NAME" value="rows" />
+        <option name="SQL_TYPE" value="INT" />
+        <option name="JDBC_TYPE" value="4" />
+        <option name="TYPE" />
+        <option name="PRIMARY" value="false" />
+        <option name="LENGTH" value="10" />
+        <option name="PRECISION" value="0" />
+        <option name="NULLABLE" value="true" />
+      </FIELD_ELEMENT>
+      <FIELD_ELEMENT>
+        <option name="NAME" value="cols" />
+        <option name="SQL_TYPE" value="INT" />
+        <option name="JDBC_TYPE" value="4" />
+        <option name="TYPE" />
+        <option name="PRIMARY" value="false" />
+        <option name="LENGTH" value="10" />
+        <option name="PRECISION" value="0" />
+        <option name="NULLABLE" value="true" />
+      </FIELD_ELEMENT>
+    </TABLE_DATA>
+    <TABLE_DATA>
+      <option name="NAME" value="quilts_tiles" />
+      <option name="SCHEMA" />
+      <option name="CATALOG" value="swing_quilt" />
+      <option name="TYPE" value="TABLE" />
+      <FIELD_ELEMENT>
+        <option name="NAME" value="quilts_id" />
+        <option name="SQL_TYPE" value="BIGINT" />
+        <option name="JDBC_TYPE" value="-5" />
+        <option name="TYPE" />
+        <option name="PRIMARY" value="true" />
+        <option name="LENGTH" value="19" />
+        <option name="PRECISION" value="0" />
+        <option name="NULLABLE" value="false" />
+      </FIELD_ELEMENT>
+      <FIELD_ELEMENT>
+        <option name="NAME" value="tiles_id" />
+        <option name="SQL_TYPE" value="BIGINT" />
+        <option name="JDBC_TYPE" value="-5" />
+        <option name="TYPE" />
+        <option name="PRIMARY" value="true" />
+        <option name="LENGTH" value="19" />
+        <option name="PRECISION" value="0" />
+        <option name="NULLABLE" value="false" />
+      </FIELD_ELEMENT>
+      <RELATIONSHIP_ELEMENT>
+        <option name="RELATION_NAME" value="FKAF13450C88DE17E" />
+        <option name="TARGET_TABLE" value="tiles" />
+        <option name="TARGET_SCHEMA" />
+        <option name="TARGET_CATALOG" value="swing_quilt" />
+        <option name="TARGET_COLUMN" value="id" />
+        <option name="SOURCE_COLUMN" value="tiles_id" />
+        <option name="CASCADE_REMOVE" value="false" />
+        <option name="CASCADE_UPDATE" value="false" />
+      </RELATIONSHIP_ELEMENT>
+      <RELATIONSHIP_ELEMENT>
+        <option name="RELATION_NAME" value="FKAF13450CD3812D0F" />
+        <option name="TARGET_TABLE" value="quilts" />
+        <option name="TARGET_SCHEMA" />
+        <option name="TARGET_CATALOG" value="swing_quilt" />
+        <option name="TARGET_COLUMN" value="id" />
+        <option name="SOURCE_COLUMN" value="quilts_id" />
+        <option name="CASCADE_REMOVE" value="false" />
+        <option name="CASCADE_UPDATE" value="false" />
+      </RELATIONSHIP_ELEMENT>
+    </TABLE_DATA>
+    <TABLE_DATA>
+      <option name="NAME" value="tiles" />
+      <option name="SCHEMA" />
+      <option name="CATALOG" value="swing_quilt" />
+      <option name="TYPE" value="TABLE" />
+      <FIELD_ELEMENT>
+        <option name="NAME" value="id" />
+        <option name="SQL_TYPE" value="BIGINT" />
+        <option name="JDBC_TYPE" value="-5" />
+        <option name="TYPE" />
+        <option name="PRIMARY" value="true" />
+        <option name="LENGTH" value="19" />
+        <option name="PRECISION" value="0" />
+        <option name="NULLABLE" value="false" />
+      </FIELD_ELEMENT>
+      <FIELD_ELEMENT>
+        <option name="NAME" value="rotation" />
+        <option name="SQL_TYPE" value="INT" />
+        <option name="JDBC_TYPE" value="4" />
+        <option name="TYPE" />
+        <option name="PRIMARY" value="false" />
+        <option name="LENGTH" value="10" />
+        <option name="PRECISION" value="0" />
+        <option name="NULLABLE" value="false" />
+      </FIELD_ELEMENT>
+      <FIELD_ELEMENT>
+        <option name="NAME" value="fileName" />
+        <option name="SQL_TYPE" value="VARCHAR" />
+        <option name="JDBC_TYPE" value="12" />
+        <option name="TYPE" />
+        <option name="PRIMARY" value="false" />
+        <option name="LENGTH" value="255" />
+        <option name="PRECISION" value="0" />
+        <option name="NULLABLE" value="true" />
+      </FIELD_ELEMENT>
+    </TABLE_DATA>
+    <libraries>
+      <library>
+        <url>jar:///Users/jbeck/workspace/swingquilt/lib/mysql-connector-5.1.10/lib/mysql-connector-java-5.1.10-bin.jar!/</url>
+      </library>
+    </libraries>
+  </DataSource>
+</component>
+

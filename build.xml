@@ -1,4 +1,4 @@
-<project name="quiltgenerator" default="compile" basedir=".">
+<project name="Quilt Generator ${version}" default="compile" basedir=".">
 
     <!-- Name of project and version -->
     <property name="proj.name"      value="Quilt Generator"/>

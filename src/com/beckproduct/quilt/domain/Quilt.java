@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.persistence.*;
 
 import java.util.*;
+import java.util.List;
 import java.awt.*;
 
 /**
@@ -24,15 +25,36 @@ public class Quilt extends JPanel
     @GeneratedValue
     private Long id;
 
-    private String name = "test";
+    private String name;
 
-    @OneToMany(targetEntity = QuiltTile.class, cascade = CascadeType.ALL)
-    public Set<QuiltTile> tiles = new LinkedHashSet<QuiltTile>();
+    private int rows;
 
-    public Component add(QuiltTile component)
+    private int cols;
+
+    @OneToMany(targetEntity = QuiltTile.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public List<QuiltTile> tiles = new ArrayList<QuiltTile>();
+
+    public Quilt()
+    {
+        super();
+    }
+
+    public Quilt(int cols, int rows)
+    {
+        super();
+        this.cols = cols;
+        this.rows = rows;
+    }
+
+    public Component addComponent(QuiltTile component)
+    {
+        super.add(component);
+        return component;
+    }
+
+    public Component addTile(QuiltTile component)
     {
         tiles.add(component);
-        super.add(component);
         return component;
     }
 
@@ -78,5 +100,56 @@ public class Quilt extends JPanel
     public void setName(String name)
     {
         this.name = name;
+    }
+
+    /**
+     * @return Returns the rows.
+     */
+    public int getRows()
+    {
+        return rows;
+    }
+
+    /**
+     * @param rows
+     *            The rows to set.
+     */
+    public void setRows(int rows)
+    {
+        this.rows = rows;
+    }
+
+    /**
+     * @return Returns the cols.
+     */
+    public int getCols()
+    {
+        return cols;
+    }
+
+    /**
+     * @param cols
+     *            The cols to set.
+     */
+    public void setCols(int cols)
+    {
+        this.cols = cols;
+    }
+
+    /**
+     * @return Returns the tiles.
+     */
+    public List<QuiltTile> getTiles()
+    {
+        return Collections.unmodifiableList(tiles);
+    }
+
+    /**
+     * @param tiles
+     *            The tiles to set.
+     */
+    public void setTiles(List<QuiltTile> tiles)
+    {
+        this.tiles = tiles;
     }
 }

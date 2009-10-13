@@ -101,6 +101,7 @@
 
     <bean id="openListener"
           class="com.beckproduct.quilt.listener.OpenListener">
+        <constructor-arg ref="mainFrame" />
         <property name="quiltRepository">
             <ref local="quiltRepository"/>
         </property>

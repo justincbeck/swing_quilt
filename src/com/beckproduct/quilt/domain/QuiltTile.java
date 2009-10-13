@@ -46,18 +46,18 @@ public class QuiltTile extends JLabel
     /**
      * @return Returns the image.
      */
-    public Icon getImage()
+    public Icon getIcon()
     {
         return super.getIcon();
     }
 
     /**
-     * @param image
+     * @param icon
      *            The image to set.
      */
-    public void setImage(ImageIcon image)
+    public void setIcon(Icon icon)
     {
-        super.setIcon(image);
+        super.setIcon(icon);
     }
 
     /**

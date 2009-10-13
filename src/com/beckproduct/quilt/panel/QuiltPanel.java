@@ -9,15 +9,20 @@ import java.awt.*;
 
 import org.springframework.context.support.*;
 import org.springframework.context.*;
+import org.apache.log4j.*;
 
 public class QuiltPanel extends JPanel
 {
     public static final long serialVersionUID = 1l;
 
+    static Logger logger = Logger.getLogger(QuiltPanel.class);
+
     private JFrame mainFrame;
 
     public static void main(String[] args)
     {
+        BasicConfigurator.configure();
+
         String[] contextPaths = new String[]{"conf/applicationContext.xml"};
         ApplicationContext applicationContext = new FileSystemXmlApplicationContext(contextPaths);
 

@@ -71,6 +71,9 @@ public class SelectListener implements ActionListener
         JButton source = (JButton) event.getSource();
         JPanel panel = (JPanel) source.getParent();
         JPanel frame = (JPanel) panel.getParent();
+        JFrame root = (JFrame) frame.getRootPane().getParent();
+        root.dispose();
+        
         Component[] comps = frame.getComponents();
         JComboBox cb = (JComboBox) comps[1];
         return (String) cb.getSelectedItem();

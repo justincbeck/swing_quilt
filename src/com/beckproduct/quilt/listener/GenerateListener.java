@@ -16,6 +16,8 @@ public class GenerateListener implements ActionListener
 
     private JFrame frame;
 
+    private int cols;
+
     private ArrayList<String> lastRow;
 
     private ArrayList<String> currentRow;
@@ -32,8 +34,9 @@ public class GenerateListener implements ActionListener
         Container content = frame.getContentPane();
         frame = (JFrame) QuiltUtilities.removeCurrentQuilt(frame);
 
+        String name = QuiltUtilities.getName(content);
         int rows = QuiltUtilities.getRows(content);
-        int cols = QuiltUtilities.getCols(content);
+        cols = QuiltUtilities.getCols(content);
 
         JPanel jQuiltPanel = new JPanel(new BorderLayout());
         jQuiltPanel.setName("quiltPanel");
@@ -44,38 +47,14 @@ public class GenerateListener implements ActionListener
         TitledBorder titledBorder = BorderFactory.createTitledBorder(border, "Your quilt Madam!");
         jQuiltPanel.setBorder(titledBorder);
 
-        Quilt quilt = new Quilt(cols, rows);
+        Quilt quilt = new Quilt(name, cols, rows);
         quilt.setLayoutManager(new GridLayout(quilt.getRows(), quilt.getCols(), 0, 0));
         
         for (int row = 0; row < quilt.getRows(); row++)
         {
             for (int col = 0; col < quilt.getCols(); col++)
             {
-                String fileName = TileUtilities.getFileName();
-
-                if (row == 0)
-                {
-                    while (currentRow.size() > 0 && (currentRow.get(col - 1)).equalsIgnoreCase(fileName))
-                    {
-                        fileName = TileUtilities.getFileName();
-                    }
-                }
-                else
-                {
-                    while (currentRow.size() > 0 && (currentRow.get(col - 1)).equalsIgnoreCase(fileName) || (lastRow.get(col)).equalsIgnoreCase(fileName))
-                    {
-                        fileName = TileUtilities.getFileName();
-                    }
-                }
-
-                currentRow.add(fileName);
-
-                if (currentRow.size() == cols)
-                {
-                    lastRow = currentRow;
-                    currentRow = new ArrayList<String>();
-                }
-
+                String fileName = getFileName(row, col);
                 int rotation = NumberUtilities.getRandomNumber(3);
 
                 Image image = ImageUtilities.getImage(fileName);
@@ -92,5 +71,35 @@ public class GenerateListener implements ActionListener
         content.add(jQuiltPanel);
 
         frame.setContentPane(content);
+    }
+
+    private String getFileName(int row, int col)
+    {
+        String fileName = TileUtilities.getFileName();
+
+        if (row == 0)
+        {
+            while (currentRow.size() > 0 && (currentRow.get(col - 1)).equalsIgnoreCase(fileName))
+            {
+                fileName = TileUtilities.getFileName();
+            }
+        }
+        else
+        {
+            while (currentRow.size() > 0 && (currentRow.get(col - 1)).equalsIgnoreCase(fileName) || (lastRow.get(col)).equalsIgnoreCase(fileName))
+            {
+                fileName = TileUtilities.getFileName();
+            }
+        }
+
+        currentRow.add(fileName);
+
+        if (currentRow.size() == cols)
+        {
+            lastRow = currentRow;
+            currentRow = new ArrayList<String>();
+        }
+
+        return fileName;
     }
 }

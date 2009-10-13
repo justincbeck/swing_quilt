@@ -40,6 +40,14 @@ public class QuiltPanel extends JPanel
         Container content = mainFrame.getContentPane();
         content.setLayout(new FlowLayout());
 
+        JLabel nameLabel = new JLabel();
+        nameLabel.setText("Name:");
+        nameLabel.setVisible(true);
+
+        JTextField nameText = new JTextField(8);
+        nameText.setName("nameText");
+        nameLabel.setVisible(true);
+
         JLabel rowsLabel = new JLabel();
         rowsLabel.setText("Row count:");
         rowsLabel.setVisible(true);
@@ -56,7 +64,9 @@ public class QuiltPanel extends JPanel
         colsText.setName("colsText");
         rowsLabel.setVisible(true);
 
-        JPanel jDimensionPanel = new JPanel(new GridLayout(2, 2));
+        JPanel jDimensionPanel = new JPanel(new GridLayout(3, 2));
+        jDimensionPanel.add(nameLabel);
+        jDimensionPanel.add(nameText);
         jDimensionPanel.add(rowsLabel);
         jDimensionPanel.add(rowsText);
         jDimensionPanel.add(colsLabel);

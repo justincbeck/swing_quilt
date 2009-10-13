@@ -51,35 +51,35 @@
     </bean>
 
     <bean id="newMenuItem" init-method="init"
-          class="com.beckproduct.quilt.menu.item.NewMeuItem">
+          class="com.beckproduct.quilt.menu.item.NewMenuItem">
         <property name="actionListener">
             <ref local="newListener"/>
         </property>
     </bean>
 
     <bean id="openMenuItem" init-method="init"
-          class="com.beckproduct.quilt.menu.item.OpenMeuItem">
+          class="com.beckproduct.quilt.menu.item.OpenMenuItem">
         <property name="actionListener">
             <ref local="openListener"/>
         </property>
     </bean>
 
     <bean id="saveMenuItem" init-method="init"
-          class="com.beckproduct.quilt.menu.item.SaveMeuItem">
+          class="com.beckproduct.quilt.menu.item.SaveMenuItem">
         <property name="actionListener">
             <ref local="saveListener"/>
         </property>
     </bean>
 
     <bean id="saveAsMenuItem" init-method="init"
-          class="com.beckproduct.quilt.menu.item.SaveAsMeuItem">
+          class="com.beckproduct.quilt.menu.item.SaveAsMenuItem">
         <property name="actionListener">
             <ref local="saveAsListener"/>
         </property>
     </bean>
 
     <bean id="printMenuItem" init-method="init"
-          class="com.beckproduct.quilt.menu.item.PrintMeuItem">
+          class="com.beckproduct.quilt.menu.item.PrintMenuItem">
         <property name="actionListener">
             <ref local="printListener"/>
         </property>
@@ -87,13 +87,7 @@
 
     <bean id="newListener"
           class="com.beckproduct.quilt.listener.NewListener">
-        <property name="frame">
-            <ref local="newQuiltFrame" />
-        </property>
-    </bean>
-
-    <bean id="createListener"
-          class="com.beckproduct.quilt.listener.CreateListener">
+        <constructor-arg ref="mainFrame" />
         <property name="quiltRepository">
             <ref local="quiltRepository"/>
         </property>
@@ -124,11 +118,6 @@
 
     <bean id="printListener"
           class="com.beckproduct.quilt.listener.PrintListener">
-    </bean>
-
-    <bean id="newQuiltFrame"
-          class="com.beckproduct.quilt.frame.NewFrame">
-        <constructor-arg ref="createListener" />
     </bean>
 
     <bean id="quiltRepository"

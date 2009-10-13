@@ -9,7 +9,8 @@ import javax.swing.border.*;
 import java.awt.event.*;
 import java.awt.*;
 import java.util.*;
-import java.util.List;
+
+import org.apache.commons.lang.*;
 
 
 public class OpenListener implements ActionListener
@@ -25,6 +26,7 @@ public class OpenListener implements ActionListener
 
     public void actionPerformed(ActionEvent event)
     {
+        
         // TODO: Temporarily writing this to get the quilt with id of 1
         // will add a dialog to select the quilt by name later.
 
@@ -33,16 +35,13 @@ public class OpenListener implements ActionListener
 
         int rotation = NumberUtilities.getRandomNumber(3);
 
-        ListIterator<QuiltTile> tileIterator = quilt.getTiles().listIterator();
-        while (tileIterator.hasNext())
+        for (QuiltTile quiltTile : quilt.getTiles())
         {
-            QuiltTile t = tileIterator.next();
-
-            Image image = ImageUtilities.getImage(t.getFileName());
+            Image image = ImageUtilities.getImage(quiltTile.getFileName());
             Image scaledImage = ImageUtilities.scaleImage(image);
             Image rotatedImage = ImageUtilities.rotateImage(scaledImage, rotation);
 
-            QuiltTile tile = TileUtilities.createTile(rotatedImage, t.getFileName(), rotation);
+            QuiltTile tile = TileUtilities.createTile(rotatedImage, quiltTile.getFileName(), rotation);
             quilt.addComponent(tile);
         }
 
@@ -60,6 +59,15 @@ public class OpenListener implements ActionListener
 
         jQuiltPanel.add(quilt, 0);
         content.add(jQuiltPanel);
+        Component[] components = content.getComponents();
+
+        JPanel dimensionPanel = (JPanel) components[1];
+        JTextField nameField = (JTextField) dimensionPanel.getComponents()[1];
+        JTextField rowsField = (JTextField) dimensionPanel.getComponents()[3];
+        JTextField colsField = (JTextField) dimensionPanel.getComponents()[5];
+        nameField.setText(quilt.getName());
+        rowsField.setText(String.valueOf(quilt.getRows()));
+        colsField.setText(String.valueOf(quilt.getCols()));
 
         frame.setContentPane(content);
     }

@@ -7,10 +7,10 @@ import javax.swing.*;
 /**
  * Created by IntelliJ IDEA.
  * User: jbeck
- * Date: Mar 16, 2009
- * Time: 11:26:47 AM
+ * Date: Oct 12, 2009
+ * Time: 5:09:16 PM
  */
-public class NewMeuItem extends JMenuItem
+public class NewMenuItem extends JMenuItem
 {
     public void init()
     {

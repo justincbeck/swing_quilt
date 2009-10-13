@@ -10,11 +10,9 @@ import java.io.*;
  */
 public interface IQuiltRepository
 {
-    public void create(Object quilt);
+    public void save(Object quilt);
 
     public Object getInstance(Serializable id);
-
-    public Object update(Object quilt);
 
     public void delete(Serializable id);
 

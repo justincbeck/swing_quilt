@@ -14,7 +14,7 @@
 	<property file="${lib.dir}/lib.properties" />
 	
     <patternset id="meta.files">
-        <include name="**/*.xml"/>
+        <include name="**/persistence.xml"/>
     </patternset>
 
 	<path id="commons.classpath">

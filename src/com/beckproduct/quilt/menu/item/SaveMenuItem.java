@@ -10,7 +10,7 @@ import javax.swing.*;
  * Date: Mar 16, 2009
  * Time: 11:26:47 AM
  */
-public class SaveMeuItem extends JMenuItem
+public class SaveMenuItem extends JMenuItem
 {
     public void init()
     {

@@ -39,9 +39,10 @@ public class Quilt extends JPanel
         super();
     }
 
-    public Quilt(int cols, int rows)
+    public Quilt(String name, int cols, int rows)
     {
         super();
+        this.name = name;
         this.cols = cols;
         this.rows = rows;
     }
@@ -141,7 +142,7 @@ public class Quilt extends JPanel
      */
     public List<QuiltTile> getTiles()
     {
-        return Collections.unmodifiableList(tiles);
+        return tiles;
     }
 
     /**

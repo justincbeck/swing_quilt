@@ -1,10 +1,10 @@
 
-    alter table quilts_tiles
-        drop
+    alter table quilts_tiles 
+        drop 
         foreign key FKAF13450CD3812D0F;
 
-    alter table quilts_tiles
-        drop
+    alter table quilts_tiles 
+        drop 
         foreign key FKAF13450C88DE17E;
 
     drop table if exists quilts;
@@ -16,15 +16,14 @@
     create table quilts (
         id bigint not null auto_increment,
         name varchar(255),
-        rows int,
-        cols int,
+        rows integer not null,
+        cols integer not null,
         primary key (id)
     );
 
     create table quilts_tiles (
         quilts_id bigint not null,
         tiles_id bigint not null,
-        primary key (quilts_id, tiles_id),
         unique (tiles_id)
     );
 

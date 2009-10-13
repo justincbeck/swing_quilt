@@ -4,6 +4,7 @@ import org.apache.commons.lang.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.*;
 
 import com.beckproduct.quilt.domain.*;
 
@@ -15,12 +16,29 @@ import com.beckproduct.quilt.domain.*;
  */
 public class QuiltUtilities
 {
+    public static String getName(Container content)
+    {
+        Component[] components = content.getComponents();
+
+        JPanel dimensionPanel = (JPanel) components[1];
+        JTextField nameField = (JTextField) dimensionPanel.getComponents()[1];
+
+        if (!StringUtils.isEmpty(nameField.getText()))
+        {
+            return nameField.getText();
+        }
+        else
+        {
+            return String.valueOf(Calendar.getInstance().getTimeInMillis());
+        }
+    }
+
     public static int getRows(Container content)
     {
         Component[] components = content.getComponents();
 
         JPanel dimensionPanel = (JPanel) components[1];
-        JTextField rowsField = (JTextField) dimensionPanel.getComponents()[1];
+        JTextField rowsField = (JTextField) dimensionPanel.getComponents()[3];
 
         if (!StringUtils.isEmpty(rowsField.getText()))
         {
@@ -37,7 +55,7 @@ public class QuiltUtilities
         Component[] components = content.getComponents();
 
         JPanel dimensionPanel = (JPanel) components[1];
-        JTextField colsField = (JTextField) dimensionPanel.getComponents()[3];
+        JTextField colsField = (JTextField) dimensionPanel.getComponents()[5];
 
         if (!StringUtils.isEmpty(colsField.getText()))
         {

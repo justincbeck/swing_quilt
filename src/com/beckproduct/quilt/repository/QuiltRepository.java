@@ -15,14 +15,21 @@ public class QuiltRepository implements IQuiltRepository
 {
     private EntityManagerFactory entityManagerFactory;
 
-    public void create(Object instance)
+    public void save(Object instance)
     {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction transaction = entityManager.getTransaction();
         transaction.begin();
 
         Quilt quilt = (Quilt) instance;
-        entityManager.persist(quilt);
+        if (quilt.getId() == null)
+        {
+            entityManager.persist(quilt);
+        }
+        else
+        {
+            entityManager.merge(quilt);
+        }
 
         transaction.commit();
         entityManager.close();
@@ -36,21 +43,6 @@ public class QuiltRepository implements IQuiltRepository
 
         Quilt quilt =
             (Quilt) entityManager.createQuery("select q from Quilt q where q.id = " + id).getSingleResult();
-
-        transaction.commit();
-        entityManager.close();
-
-        return quilt;
-    }
-
-    public Object update(Object instance)
-    {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        EntityTransaction transaction = entityManager.getTransaction();
-        transaction.begin();
-
-        Quilt quilt = (Quilt) instance;
-        entityManager.merge(quilt);
 
         transaction.commit();
         entityManager.close();

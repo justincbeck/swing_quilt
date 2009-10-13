@@ -11,7 +11,7 @@ public class SaveAsListener implements ActionListener
 
     public void actionPerformed(ActionEvent event)
     {
-        quiltRepository.update(null);
+        quiltRepository.save(null);
         // TODO: Write the SaveAsListner.actionPerformed(ActionEvent event) method
     }
 

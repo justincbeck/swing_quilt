@@ -1,25 +1,41 @@
 package com.beckproduct.quilt.listener;
 
-import com.beckproduct.quilt.frame.*;
-
 import java.awt.event.*;
 
+import com.beckproduct.quilt.repository.*;
+import com.beckproduct.quilt.utilities.*;
+
+import javax.swing.*;
+
+/**
+ * Created by IntelliJ IDEA.
+ * User: jbeck
+ * Date: Mar 13, 2009
+ * Time: 11:42:21 PM
+ */
 public class NewListener implements ActionListener
 {
-    private NewFrame frame;
+    private JFrame frame;
+
+    private IQuiltRepository quiltRepository;
+
+    public NewListener(JFrame frame)
+    {
+        this.frame = frame;
+    }
 
     public void actionPerformed(ActionEvent event)
     {
-        frame.setVisible(true);
+        frame = (JFrame) QuiltUtilities.removeCurrentQuilt(frame);
     }
 
-    public NewFrame getFrame()
+    public IQuiltRepository getQuiltRepository()
     {
-        return frame;
+        return quiltRepository;
     }
 
-    public void setFrame(NewFrame frame)
+    public void setQuiltRepository(IQuiltRepository quiltRepository)
     {
-        this.frame = frame;
+        this.quiltRepository = quiltRepository;
     }
 }

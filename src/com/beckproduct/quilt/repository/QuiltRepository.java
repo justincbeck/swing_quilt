@@ -4,6 +4,9 @@ import com.beckproduct.quilt.domain.*;
 
 import javax.persistence.*;
 import java.io.*;
+import java.util.*;
+
+import org.apache.log4j.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -13,6 +16,8 @@ import java.io.*;
  */
 public class QuiltRepository implements IQuiltRepository
 {
+    static Logger logger = Logger.getLogger(QuiltRepository.class);
+
     private EntityManagerFactory entityManagerFactory;
 
     public void save(Object instance)
@@ -24,7 +29,15 @@ public class QuiltRepository implements IQuiltRepository
         Quilt quilt = (Quilt) instance;
         if (quilt.getId() == null)
         {
-            entityManager.persist(quilt);
+            try
+            {
+                entityManager.persist(quilt);
+            }
+            catch (Exception e)
+            {
+                logger.error(e.getMessage());
+                return;
+            }
         }
         else
         {
@@ -48,6 +61,32 @@ public class QuiltRepository implements IQuiltRepository
         entityManager.close();
 
         return quilt;
+    }
+
+    public Object getInstanceByName(String name)
+    {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+
+        Object instance = entityManager.createQuery("select quilt from Quilt quilt where quilt.name = '" + name + "'").getSingleResult();
+
+        transaction.commit();
+        entityManager.close();
+        return instance;
+    }
+
+    public List list()
+    {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        transaction.begin();
+
+        List quiltNames = entityManager.createQuery("select quilt.name from Quilt quilt").getResultList();
+
+        transaction.commit();
+        entityManager.close();
+        return quiltNames;
     }
 
     public void delete(Serializable id)

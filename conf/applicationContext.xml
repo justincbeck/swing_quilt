@@ -24,6 +24,13 @@
         </property>
     </bean>
 
+    <bean id="openFrame"
+          class="com.beckproduct.quilt.frame.OpenFrame">
+        <constructor-arg value="Open quilt" />
+        <constructor-arg ref="mainFrame" />
+        <constructor-arg ref="quiltRepository" />
+    </bean>
+
     <bean id="mainMenuBar"
           class="com.beckproduct.quilt.menu.MainMenuBar" >
         <property name="fileMenu">
@@ -33,9 +40,6 @@
 
     <bean id="fileMenu" init-method="init"
           class="com.beckproduct.quilt.menu.FileMenu" >
-        <property name="newMenuItem">
-            <ref local="newMenuItem" />
-        </property>
         <property name="openMenuItem">
             <ref local="openMenuItem" />
         </property>
@@ -47,13 +51,6 @@
         </property>
         <property name="printMenuItem">
             <ref local="printMenuItem" />
-        </property>
-    </bean>
-
-    <bean id="newMenuItem" init-method="init"
-          class="com.beckproduct.quilt.menu.item.NewMenuItem">
-        <property name="actionListener">
-            <ref local="newListener"/>
         </property>
     </bean>
 
@@ -85,19 +82,13 @@
         </property>
     </bean>
 
-    <bean id="newListener"
-          class="com.beckproduct.quilt.listener.NewListener">
-        <constructor-arg ref="mainFrame" />
+    <bean id="openListener"
+          class="com.beckproduct.quilt.listener.OpenListener">
         <property name="quiltRepository">
             <ref local="quiltRepository"/>
         </property>
-    </bean>
-
-    <bean id="openListener"
-          class="com.beckproduct.quilt.listener.OpenListener">
-        <constructor-arg ref="mainFrame" />
-        <property name="quiltRepository">
-            <ref local="quiltRepository"/>
+        <property name="openFrame">
+            <ref local="openFrame"/>
         </property>
     </bean>
 

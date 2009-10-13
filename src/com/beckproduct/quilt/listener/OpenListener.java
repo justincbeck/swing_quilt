@@ -1,75 +1,48 @@
 package com.beckproduct.quilt.listener;
 
-import com.beckproduct.quilt.repository.*;
-import com.beckproduct.quilt.domain.*;
-import com.beckproduct.quilt.utilities.*;
-
-import javax.swing.*;
-import javax.swing.border.*;
 import java.awt.event.*;
 import java.awt.*;
 import java.util.*;
+import java.util.List;
 
-import org.apache.commons.lang.*;
+import com.beckproduct.quilt.repository.*;
 
+import javax.swing.*;
 
+/**
+ * Created by IntelliJ IDEA.
+ * User: jbeck
+ * Date: Mar 13, 2009
+ * Time: 11:42:21 PM
+ */
 public class OpenListener implements ActionListener
 {
-    private JFrame frame;
+    private JFrame openFrame;
 
     private IQuiltRepository quiltRepository;
 
-    public OpenListener(JFrame frame)
-    {
-        this.frame = frame;
-    }
-
     public void actionPerformed(ActionEvent event)
     {
-        
-        // TODO: Temporarily writing this to get the quilt with id of 1
-        // will add a dialog to select the quilt by name later.
+        List quilts = quiltRepository.list();
 
-        Quilt quilt = (Quilt) quiltRepository.getInstance(1l);
-        quilt.setLayoutManager(new GridLayout(quilt.getRows(), quilt.getCols(), 0, 0));
+        JComboBox quiltCombo = new JComboBox(quilts.toArray());
 
-        int rotation = NumberUtilities.getRandomNumber(3);
-
-        for (QuiltTile quiltTile : quilt.getTiles())
+        if (openFrame.getContentPane().getComponents().length == 2)
         {
-            Image image = ImageUtilities.getImage(quiltTile.getFileName());
-            Image scaledImage = ImageUtilities.scaleImage(image);
-            Image rotatedImage = ImageUtilities.rotateImage(scaledImage, rotation);
-
-            QuiltTile tile = TileUtilities.createTile(rotatedImage, quiltTile.getFileName(), rotation);
-            quilt.addComponent(tile);
+            openFrame.getContentPane().remove(1);
         }
+        openFrame.getContentPane().add(quiltCombo);
+        openFrame.setVisible(true);
+    }
 
-        Container content = frame.getContentPane();
-        frame = (JFrame) QuiltUtilities.removeCurrentQuilt(frame);
-        
-        JPanel jQuiltPanel = new JPanel(new BorderLayout());
-        jQuiltPanel.setName("quiltPanel");
-        jQuiltPanel.setPreferredSize(new Dimension(quilt.getCols() * 50, quilt.getRows() * 50));
-        jQuiltPanel.setVisible(true);
+    public JFrame getOpenFrame()
+    {
+        return openFrame;
+    }
 
-        Border border = BorderFactory.createEtchedBorder();
-        TitledBorder titledBorder = BorderFactory.createTitledBorder(border, "Your quilt Madam!");
-        jQuiltPanel.setBorder(titledBorder);
-
-        jQuiltPanel.add(quilt, 0);
-        content.add(jQuiltPanel);
-        Component[] components = content.getComponents();
-
-        JPanel dimensionPanel = (JPanel) components[1];
-        JTextField nameField = (JTextField) dimensionPanel.getComponents()[1];
-        JTextField rowsField = (JTextField) dimensionPanel.getComponents()[3];
-        JTextField colsField = (JTextField) dimensionPanel.getComponents()[5];
-        nameField.setText(quilt.getName());
-        rowsField.setText(String.valueOf(quilt.getRows()));
-        colsField.setText(String.valueOf(quilt.getCols()));
-
-        frame.setContentPane(content);
+    public void setOpenFrame(JFrame openFrame)
+    {
+        this.openFrame = openFrame;
     }
 
     public IQuiltRepository getQuiltRepository()

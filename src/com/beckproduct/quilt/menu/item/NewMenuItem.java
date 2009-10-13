@@ -18,13 +18,13 @@ public class NewMenuItem extends JMenuItem
         this.setName("new");
     }
 
-    public void setActionListener(NewListener newListener)
+    public void setActionListener(OpenListener openListener)
     {
-        this.addActionListener(newListener);
+        this.addActionListener(openListener);
     }
 
-    public NewListener getActionListener()
+    public OpenListener getActionListener()
     {
-        return (NewListener) super.getActionListeners()[0];
+        return (OpenListener) super.getActionListeners()[0];
     }
 }

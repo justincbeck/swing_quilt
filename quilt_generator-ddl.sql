@@ -15,7 +15,7 @@
 
     create table quilts (
         id bigint not null auto_increment,
-        name varchar(255),
+        name varchar(255) unique,
         rows integer not null,
         cols integer not null,
         primary key (id)

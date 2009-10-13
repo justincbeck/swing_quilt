@@ -25,6 +25,7 @@ public class Quilt extends JPanel
     @GeneratedValue
     private Long id;
 
+    @Column(unique = true)
     private String name;
 
     private int rows;

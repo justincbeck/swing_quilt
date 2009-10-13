@@ -1,6 +1,7 @@
 package com.beckproduct.quilt.repository;
 
 import java.io.*;
+import java.util.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -13,6 +14,10 @@ public interface IQuiltRepository
     public void save(Object quilt);
 
     public Object getInstance(Serializable id);
+
+    public Object getInstanceByName(String name);
+
+    public List list();
 
     public void delete(Serializable id);
 

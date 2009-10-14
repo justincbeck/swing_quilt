@@ -24,7 +24,9 @@ public class QuiltTile extends JLabel
 
     private int rotation;
 
-    private String fileName;
+    @ManyToOne(targetEntity = RawImage.class, fetch = FetchType.EAGER)
+    @JoinColumn(name = "image_id")
+    private RawImage image;
 
     /**
      * @return Returns the id.
@@ -77,20 +79,13 @@ public class QuiltTile extends JLabel
         this.rotation = rotation;
     }
 
-    /**
-     * @return Returns the filename.
-     */
-    public String getFileName()
+    public RawImage getImage()
     {
-        return fileName;
+        return image;
     }
 
-    /**
-     * @param fileName
-     *            The fileName to set.
-     */
-    public void setFileName(String fileName)
+    public void setImage(RawImage image)
     {
-        this.fileName = fileName;
+        this.image = image;
     }
 }

@@ -14,4 +14,9 @@ public class MainMenuBar extends JMenuBar
     {
         super.add(fileMenu);
     }
+
+    public void setImageMenu(ImageMenu imageMenu)
+    {
+        super.add(imageMenu);
+    }
 }

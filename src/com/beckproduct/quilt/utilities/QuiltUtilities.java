@@ -71,9 +71,9 @@ public class QuiltUtilities
     {
         Component[] comps = frame.getContentPane().getComponents();
 
-        if (comps.length == 3)
+        if (comps.length == 4)
         {
-            frame.getContentPane().remove(2);
+            frame.getContentPane().remove(3);
         }
 
         return frame;

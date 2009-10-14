@@ -14,30 +14,16 @@ import java.util.*;
  */
 public class TileUtilities
 {
-    public static String getFileName()
+    public static String getFileName(Object[] list)
     {
-        String fileName = "";
-        int nextInt = NumberUtilities.getRandomNumber(3);
-        switch (nextInt)
-        {
-            case 0:
-                fileName = "images/Stripe.jpg";
-                break;
-            case 1:
-                fileName = "images/Solid.jpg";
-                break;
-            case 2:
-                fileName = "images/Print.jpg";
-                break;
-        }
-        return fileName;
+        int nextInt = NumberUtilities.getRandomNumber(list.length);
+        return (String) list[nextInt];
     }
 
-    public static QuiltTile createTile(Image image, String fileName, int rotation)
+    public static QuiltTile createTile(Image image, int rotation)
     {
         QuiltTile tile = new QuiltTile();
         tile.setIcon(new ImageIcon(image));
-        tile.setFileName(fileName);
         tile.setRotation(rotation);
 
         return tile;

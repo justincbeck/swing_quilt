@@ -2,6 +2,7 @@ package com.beckproduct.quilt.panel;
 
 import com.beckproduct.quilt.listener.*;
 import com.beckproduct.quilt.utilities.*;
+import com.beckproduct.quilt.repository.*;
 
 import javax.swing.*;
 import javax.swing.border.*;
@@ -19,6 +20,8 @@ public class QuiltPanel extends JPanel
 
     private JFrame mainFrame;
 
+    private IImageRepository imageRepository;
+
     public static void main(String[] args)
     {
         BasicConfigurator.configure();
@@ -28,6 +31,7 @@ public class QuiltPanel extends JPanel
 
         QuiltPanel generator = new QuiltPanel();
         generator.mainFrame = (JFrame) applicationContext.getBean("mainFrame");
+        generator.imageRepository = (IImageRepository) applicationContext.getBean("imageRepository");
 
         generator.start();
     }
@@ -64,6 +68,12 @@ public class QuiltPanel extends JPanel
         colsText.setName("colsText");
         rowsLabel.setVisible(true);
 
+        JList list = new JList(imageRepository.list().toArray());
+        list.setLayoutOrientation(JList.VERTICAL);
+
+        JScrollPane listScroller = new JScrollPane(list);
+        listScroller.setPreferredSize(new Dimension(250, 80));
+
         JPanel jDimensionPanel = new JPanel(new GridLayout(3, 2));
         jDimensionPanel.add(nameLabel);
         jDimensionPanel.add(nameText);
@@ -80,15 +90,24 @@ public class QuiltPanel extends JPanel
         TitledBorder titledBorder = BorderFactory.createTitledBorder(border, "Click to Generate!");
         jButtonPanel.setBorder(titledBorder);
 
+        JPanel jListScrollerPanel = new JPanel(new BorderLayout());
+        jListScrollerPanel.add(listScroller);
+
         JButton go = new JButton("Generate");
         go.setName("generateButton");
         go.setPreferredSize(new Dimension(100, 50));
-        go.addActionListener(new GenerateListener(mainFrame));
+        go.addActionListener(new GenerateListener(imageRepository, mainFrame));
+        if (list.getModel().getSize() == 0)
+        {
+            go.setEnabled(false);
+        }
 
         jButtonPanel.add(go, BorderLayout.CENTER);
 
         content.add(jButtonPanel);
         content.add(jDimensionPanel);
+        content.add(jListScrollerPanel);
+
         mainFrame.addWindowListener(new ExitListener());
         mainFrame.setVisible(true);
     }
@@ -101,5 +120,15 @@ public class QuiltPanel extends JPanel
     public void setMainFrame(JFrame mainFrame)
     {
         this.mainFrame = mainFrame;
+    }
+
+    public IImageRepository getImageRepository()
+    {
+        return imageRepository;
+    }
+
+    public void setImageRepository(IImageRepository imageRepository)
+    {
+        this.imageRepository = imageRepository;
     }
 }

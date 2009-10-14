@@ -22,7 +22,7 @@ public class SaveListener implements ActionListener
     public void actionPerformed(ActionEvent event)
     {
         Container content = frame.getContentPane();
-        JPanel jQuiltPanel = (JPanel) content.getComponent(2);
+        JPanel jQuiltPanel = (JPanel) content.getComponent(3);
         Quilt quilt = (Quilt) jQuiltPanel.getComponent(0);
 
         quiltRepository.save(quilt);

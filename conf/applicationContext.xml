@@ -36,6 +36,9 @@
         <property name="fileMenu">
             <ref local="fileMenu" />
         </property>
+        <property name="imageMenu">
+            <ref local="imageMenu" />
+        </property>
     </bean>
 
     <bean id="fileMenu" init-method="init"
@@ -51,6 +54,20 @@
         </property>
         <property name="printMenuItem">
             <ref local="printMenuItem" />
+        </property>
+    </bean>
+
+    <bean id="imageMenu" init-method="init"
+          class="com.beckproduct.quilt.menu.ImageMenu" >
+        <property name="addImageMenuItem">
+            <ref local="addImageMenuItem" />
+        </property>
+    </bean>
+
+    <bean id="addImageMenuItem" init-method="init"
+          class="com.beckproduct.quilt.menu.item.AddImageMenuItem">
+        <property name="actionListener">
+            <ref local="addImageListener"/>
         </property>
     </bean>
 
@@ -79,6 +96,13 @@
           class="com.beckproduct.quilt.menu.item.PrintMenuItem">
         <property name="actionListener">
             <ref local="printListener"/>
+        </property>
+    </bean>
+
+    <bean id="addImageListener"
+          class="com.beckproduct.quilt.listener.AddImageListener">
+        <property name="imageRepository">
+            <ref local="imageRepository"/>
         </property>
     </bean>
 
@@ -113,6 +137,13 @@
 
     <bean id="quiltRepository"
           class="com.beckproduct.quilt.repository.QuiltRepository">
+        <property name="entityManagerFactory">
+            <ref local="entityManagerFactory"/>
+        </property>
+    </bean>
+
+    <bean id="imageRepository"
+          class="com.beckproduct.quilt.repository.ImageRepository">
         <property name="entityManagerFactory">
             <ref local="entityManagerFactory"/>
         </property>

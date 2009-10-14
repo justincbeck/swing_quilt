@@ -15,11 +15,6 @@ public class FileMenu extends JMenu
         this.setText("File");
     }
 
-    public void setNewMenuItem(JMenuItem newMenuItem)
-    {
-        super.add(newMenuItem);
-    }
-
     public void setOpenMenuItem(JMenuItem openMenuItem)
     {
         super.add(openMenuItem);

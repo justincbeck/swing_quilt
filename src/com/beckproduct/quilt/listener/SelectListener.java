@@ -27,15 +27,13 @@ public class SelectListener implements ActionListener
         Quilt quilt = (Quilt) quiltRepository.getInstanceByName(getSelection(event));
         quilt.setLayoutManager(new GridLayout(quilt.getRows(), quilt.getCols(), 0, 0));
 
-        int rotation = NumberUtilities.getRandomNumber(3);
-
         for (QuiltTile quiltTile : quilt.getTiles())
         {
-            Image image = ImageUtilities.getImage(quiltTile.getFileName());
+            Image image = ImageUtilities.getImage(quiltTile.getImage());
             Image scaledImage = ImageUtilities.scaleImage(image);
-            Image rotatedImage = ImageUtilities.rotateImage(scaledImage, rotation);
+            Image rotatedImage = ImageUtilities.transformImage(scaledImage, quiltTile.getRotation());
 
-            QuiltTile tile = TileUtilities.createTile(rotatedImage, quiltTile.getFileName(), rotation);
+            QuiltTile tile = TileUtilities.createTile(rotatedImage, quiltTile.getRotation());
             quilt.addComponent(tile);
         }
 

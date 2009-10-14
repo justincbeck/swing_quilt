@@ -7,11 +7,24 @@
         drop 
         foreign key FKAF13450C88DE17E;
 
+    alter table tiles 
+        drop 
+        foreign key FK69403857F8328C4;
+
+    drop table if exists images;
+
     drop table if exists quilts;
 
     drop table if exists quilts_tiles;
 
     drop table if exists tiles;
+
+    create table images (
+        id bigint not null auto_increment,
+        name varchar(255) unique,
+        image MEDIUMBLOB,
+        primary key (id)
+    );
 
     create table quilts (
         id bigint not null auto_increment,
@@ -30,7 +43,7 @@
     create table tiles (
         id bigint not null auto_increment,
         rotation integer not null,
-        fileName varchar(255),
+        image_id bigint,
         primary key (id)
     );
 
@@ -45,3 +58,9 @@
         add constraint FKAF13450C88DE17E 
         foreign key (tiles_id) 
         references tiles (id);
+
+    alter table tiles 
+        add index FK69403857F8328C4 (image_id), 
+        add constraint FK69403857F8328C4 
+        foreign key (image_id) 
+        references images (id);

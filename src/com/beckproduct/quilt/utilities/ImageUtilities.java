@@ -1,13 +1,11 @@
 package com.beckproduct.quilt.utilities;
 
-import com.beckproduct.quilt.domain.*;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.*;
 
 import org.apache.log4j.*;
+import com.beckproduct.quilt.domain.*;
 
 public class ImageUtilities
 {
@@ -25,45 +23,16 @@ public class ImageUtilities
         return bufferedImage;
     }
 
-    public static Image getImage(String fileName)
+    public static Image getImage(RawImage rawImage)
     {
-        Image originalImage;
-        FileInputStream fis;
-
-        try
-        {
-            fis = new FileInputStream(fileName);
-            BufferedInputStream bis = new BufferedInputStream(fis);
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            int ch;
-            while ((ch = bis.read()) != -1)
-            {
-                baos.write(ch);
-            }
-
-            originalImage = Toolkit.getDefaultToolkit().createImage(baos.toByteArray());
-        }
-        catch (FileNotFoundException e)
-        {
-            logger.error("I cannot find the file: " + fileName);
-            return null;
-        }
-        catch (IOException ioe)
-        {
-            logger.error("Error reading file: " + fileName);
-            return null;
-        }
-
-        return originalImage;
+        return Toolkit.getDefaultToolkit().createImage(rawImage.getImage());
     }
 
-    public static Image rotateImage(Image rawImage, int rotation)
+    public static Image transformImage(Image rawImage, int rotation)
     {
         double angle = Math.toRadians(rotation * 90);
 
-        GraphicsEnvironment environment = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        GraphicsDevice device = environment.getDefaultScreenDevice();
-        GraphicsConfiguration config = device.getDefaultConfiguration();
+        GraphicsConfiguration config = getGraphicsEnvironment();
 
         BufferedImage bufferedImage = ImageUtilities.toBufferedImage(config, rawImage);
 
@@ -85,6 +54,13 @@ public class ImageUtilities
         graphics.dispose();
 
         return image;
+    }
+
+    public static GraphicsConfiguration getGraphicsEnvironment()
+    {
+        GraphicsEnvironment environment = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        GraphicsDevice device = environment.getDefaultScreenDevice();
+        return device.getDefaultConfiguration();
     }
 
     public static Image scaleImage(Image rawImage)

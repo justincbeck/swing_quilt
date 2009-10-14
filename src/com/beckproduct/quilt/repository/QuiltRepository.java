@@ -44,6 +44,8 @@ public class QuiltRepository implements IQuiltRepository
             entityManager.merge(quilt);
         }
 
+        entityManager.flush();
+
         transaction.commit();
         entityManager.close();
     }

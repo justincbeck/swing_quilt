@@ -64,4 +64,13 @@ public class WindowUtilities
     {
         return (openInJFrame(content, width, height, content.getClass().getName(), Color.white));
     }
+
+    public static JList getJList(JFrame frame)
+    {
+        Component[] comps = frame.getContentPane().getComponents();
+        JPanel panel = (JPanel) comps[2];
+        JScrollPane scrollPane = (JScrollPane) panel.getComponents()[0];
+        JViewport viewPort = (JViewport) scrollPane.getComponents()[0];
+        return (JList) viewPort.getComponents()[0];
+    }
 }

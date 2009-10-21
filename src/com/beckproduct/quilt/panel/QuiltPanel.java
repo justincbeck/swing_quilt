@@ -68,7 +68,10 @@ public class QuiltPanel extends JPanel
         colsText.setName("colsText");
         rowsLabel.setVisible(true);
 
-        JList list = new JList(imageRepository.list().toArray());
+        DefaultListModel listModel = new DefaultListModel();
+        Object[] imageNames = imageRepository.list().toArray();
+        for (Object o : imageNames) listModel.addElement(o);
+        JList list = new JList(listModel);
         list.setLayoutOrientation(JList.VERTICAL);
 
         JScrollPane listScroller = new JScrollPane(list);
@@ -97,11 +100,6 @@ public class QuiltPanel extends JPanel
         go.setName("generateButton");
         go.setPreferredSize(new Dimension(100, 50));
         go.addActionListener(new GenerateListener(imageRepository, mainFrame));
-        if (list.getModel().getSize() == 0)
-        {
-            go.setEnabled(false);
-        }
-
         jButtonPanel.add(go, BorderLayout.CENTER);
 
         content.add(jButtonPanel);

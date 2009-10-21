@@ -86,12 +86,7 @@ public class GenerateListener implements ActionListener
 
     private Object[] getImageList(JFrame frame)
     {
-        Component[] comps = frame.getContentPane().getComponents();
-        JPanel panel = (JPanel) comps[2];
-        JScrollPane scrollPane = (JScrollPane) panel.getComponents()[0];
-        JViewport viewPort = (JViewport) scrollPane.getComponents()[0];
-        JList list = (JList) viewPort.getComponents()[0];
-
+        JList list = WindowUtilities.getJList(frame);
         return list.getSelectedValues();
     }
 

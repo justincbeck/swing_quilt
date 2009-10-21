@@ -1,18 +1,31 @@
 package com.beckproduct.quilt.listener;
 
 import com.beckproduct.quilt.repository.*;
+import com.beckproduct.quilt.domain.*;
 
+import javax.swing.*;
 import java.awt.event.*;
+import java.awt.*;
 
 
 public class SaveAsListener implements ActionListener
 {
+    private JFrame frame;
+
     private IQuiltRepository quiltRepository;
+
+    public SaveAsListener(JFrame frame)
+    {
+        this.frame = frame;
+    }
 
     public void actionPerformed(ActionEvent event)
     {
-        quiltRepository.save(null);
-        // TODO: Write the SaveAsListner.actionPerformed(ActionEvent event) method
+        Container content = frame.getContentPane();
+        JPanel jQuiltPanel = (JPanel) content.getComponent(3);
+        Quilt quilt = (Quilt) jQuiltPanel.getComponent(0);
+
+        quiltRepository.save(quilt);
     }
 
     public IQuiltRepository getQuiltRepository()

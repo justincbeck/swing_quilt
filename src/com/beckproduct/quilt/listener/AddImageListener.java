@@ -20,7 +20,14 @@ public class AddImageListener implements ActionListener
 {
     static Logger logger = Logger.getLogger(AddImageListener.class);
 
+    private JFrame frame;
+
     private IImageRepository imageRepository;
+
+    public AddImageListener(JFrame frame)
+    {
+        this.frame = frame;
+    }
 
     public void actionPerformed(ActionEvent event)
     {
@@ -42,6 +49,10 @@ public class AddImageListener implements ActionListener
 
             imageRepository.saveFile(new RawImage(chooser.getSelectedFile().getName(), array));
         }
+
+        JList list = WindowUtilities.getJList(frame);
+        DefaultListModel model = (DefaultListModel) list.getModel();
+        model.addElement(chooser.getSelectedFile().getName());
     }
 
     public IImageRepository getImageRepository()

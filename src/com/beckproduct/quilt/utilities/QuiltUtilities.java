@@ -6,8 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 
-import com.beckproduct.quilt.domain.*;
-
 /**
  * Created by IntelliJ IDEA.
  * User: jbeck
@@ -67,7 +65,7 @@ public class QuiltUtilities
         }
     }
 
-    public static Component removeCurrentQuilt(JFrame frame)
+    public static JFrame removeCurrentQuilt(JFrame frame)
     {
         Component[] comps = frame.getContentPane().getComponents();
 

@@ -23,9 +23,6 @@ public class RawImage
     @Column(columnDefinition="MEDIUMBLOB")
     private byte[] image;
 
-    //@OneToMany(mappedBy = "image", cascade = CascadeType.ALL)
-    //private QuiltTile tile;
-
     public RawImage()
     {
         // Default Constructor

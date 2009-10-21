@@ -13,6 +13,42 @@
     <option name="DATABASE_PRODUCT_NAME" value="MySQL" />
     <option name="DATABASE_PRODUCT_VERSION" value="5.1.37-log" />
     <TABLE_DATA>
+      <option name="NAME" value="images" />
+      <option name="SCHEMA" />
+      <option name="CATALOG" value="swing_quilt" />
+      <option name="TYPE" value="TABLE" />
+      <FIELD_ELEMENT>
+        <option name="NAME" value="id" />
+        <option name="SQL_TYPE" value="BIGINT" />
+        <option name="JDBC_TYPE" value="-5" />
+        <option name="TYPE" />
+        <option name="PRIMARY" value="true" />
+        <option name="LENGTH" value="19" />
+        <option name="PRECISION" value="0" />
+        <option name="NULLABLE" value="false" />
+      </FIELD_ELEMENT>
+      <FIELD_ELEMENT>
+        <option name="NAME" value="name" />
+        <option name="SQL_TYPE" value="VARCHAR" />
+        <option name="JDBC_TYPE" value="12" />
+        <option name="TYPE" />
+        <option name="PRIMARY" value="false" />
+        <option name="LENGTH" value="255" />
+        <option name="PRECISION" value="0" />
+        <option name="NULLABLE" value="true" />
+      </FIELD_ELEMENT>
+      <FIELD_ELEMENT>
+        <option name="NAME" value="image" />
+        <option name="SQL_TYPE" value="MEDIUMBLOB" />
+        <option name="JDBC_TYPE" value="-4" />
+        <option name="TYPE" />
+        <option name="PRIMARY" value="false" />
+        <option name="LENGTH" value="16777215" />
+        <option name="PRECISION" value="0" />
+        <option name="NULLABLE" value="true" />
+      </FIELD_ELEMENT>
+    </TABLE_DATA>
+    <TABLE_DATA>
       <option name="NAME" value="quilts" />
       <option name="SCHEMA" />
       <option name="CATALOG" value="swing_quilt" />
@@ -45,7 +81,7 @@
         <option name="PRIMARY" value="false" />
         <option name="LENGTH" value="10" />
         <option name="PRECISION" value="0" />
-        <option name="NULLABLE" value="true" />
+        <option name="NULLABLE" value="false" />
       </FIELD_ELEMENT>
       <FIELD_ELEMENT>
         <option name="NAME" value="cols" />
@@ -55,7 +91,7 @@
         <option name="PRIMARY" value="false" />
         <option name="LENGTH" value="10" />
         <option name="PRECISION" value="0" />
-        <option name="NULLABLE" value="true" />
+        <option name="NULLABLE" value="false" />
       </FIELD_ELEMENT>
     </TABLE_DATA>
     <TABLE_DATA>
@@ -68,7 +104,7 @@
         <option name="SQL_TYPE" value="BIGINT" />
         <option name="JDBC_TYPE" value="-5" />
         <option name="TYPE" />
-        <option name="PRIMARY" value="true" />
+        <option name="PRIMARY" value="false" />
         <option name="LENGTH" value="19" />
         <option name="PRECISION" value="0" />
         <option name="NULLABLE" value="false" />
@@ -78,7 +114,7 @@
         <option name="SQL_TYPE" value="BIGINT" />
         <option name="JDBC_TYPE" value="-5" />
         <option name="TYPE" />
-        <option name="PRIMARY" value="true" />
+        <option name="PRIMARY" value="false" />
         <option name="LENGTH" value="19" />
         <option name="PRECISION" value="0" />
         <option name="NULLABLE" value="false" />
@@ -130,15 +166,25 @@
         <option name="NULLABLE" value="false" />
       </FIELD_ELEMENT>
       <FIELD_ELEMENT>
-        <option name="NAME" value="fileName" />
-        <option name="SQL_TYPE" value="VARCHAR" />
-        <option name="JDBC_TYPE" value="12" />
+        <option name="NAME" value="image_id" />
+        <option name="SQL_TYPE" value="BIGINT" />
+        <option name="JDBC_TYPE" value="-5" />
         <option name="TYPE" />
         <option name="PRIMARY" value="false" />
-        <option name="LENGTH" value="255" />
+        <option name="LENGTH" value="19" />
         <option name="PRECISION" value="0" />
         <option name="NULLABLE" value="true" />
       </FIELD_ELEMENT>
+      <RELATIONSHIP_ELEMENT>
+        <option name="RELATION_NAME" value="FK69403857F8328C4" />
+        <option name="TARGET_TABLE" value="images" />
+        <option name="TARGET_SCHEMA" />
+        <option name="TARGET_CATALOG" value="swing_quilt" />
+        <option name="TARGET_COLUMN" value="id" />
+        <option name="SOURCE_COLUMN" value="image_id" />
+        <option name="CASCADE_REMOVE" value="false" />
+        <option name="CASCADE_UPDATE" value="false" />
+      </RELATIONSHIP_ELEMENT>
     </TABLE_DATA>
     <libraries>
       <library>

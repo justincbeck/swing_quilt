@@ -22,14 +22,20 @@ public class QuiltPanel extends JPanel
 
     private IImageRepository imageRepository;
 
+    public QuiltPanel(String name)
+    {
+        super.setName(name);
+    }
+
     public static void main(String[] args)
     {
         BasicConfigurator.configure();
+        WindowUtilities.setNativeLookAndFeel();
 
         String[] contextPaths = new String[]{"conf/applicationContext.xml"};
         ApplicationContext applicationContext = new FileSystemXmlApplicationContext(contextPaths);
 
-        QuiltPanel generator = new QuiltPanel();
+        QuiltPanel generator = new QuiltPanel("Quilt Generator");
         generator.mainFrame = (JFrame) applicationContext.getBean("mainFrame");
         generator.imageRepository = (IImageRepository) applicationContext.getBean("imageRepository");
 
@@ -38,7 +44,6 @@ public class QuiltPanel extends JPanel
 
     private void start()
     {
-        WindowUtilities.setNativeLookAndFeel();
         mainFrame.setSize(750, 600);
 
         Container content = mainFrame.getContentPane();

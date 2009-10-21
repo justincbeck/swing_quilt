@@ -33,7 +33,8 @@ public class AddImageListener implements ActionListener
     {
         JFileChooser chooser = new JFileChooser(new File("/"));
         int returnVal = chooser.showDialog(((JMenuItem) event.getSource()).getParent(), "Choose");
-        if(returnVal == JFileChooser.APPROVE_OPTION) {
+        if (returnVal == JFileChooser.APPROVE_OPTION)
+        {
             File file = chooser.getSelectedFile();
             byte[] array;
             try
@@ -48,11 +49,11 @@ public class AddImageListener implements ActionListener
             }
 
             imageRepository.saveFile(new RawImage(chooser.getSelectedFile().getName(), array));
-        }
 
-        JList list = WindowUtilities.getJList(frame);
-        DefaultListModel model = (DefaultListModel) list.getModel();
-        model.addElement(chooser.getSelectedFile().getName());
+            JList list = WindowUtilities.getJList(frame);
+            DefaultListModel model = (DefaultListModel) list.getModel();
+            model.addElement(chooser.getSelectedFile().getName());
+        }
     }
 
     public IImageRepository getImageRepository()

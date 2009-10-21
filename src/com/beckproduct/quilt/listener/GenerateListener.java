@@ -38,7 +38,7 @@ public class GenerateListener implements ActionListener
     public void actionPerformed(ActionEvent event)
     {
         Container content = frame.getContentPane();
-        frame = (JFrame) QuiltUtilities.removeCurrentQuilt(frame);
+        frame = QuiltUtilities.removeCurrentQuilt(frame);
 
         String name = QuiltUtilities.getName(content);
         int rows = QuiltUtilities.getRows(content);
@@ -58,30 +58,33 @@ public class GenerateListener implements ActionListener
 
         list = getImageList(frame);
 
-        for (int row = 0; row < quilt.getRows(); row++)
+        if (list.length >= 2)
         {
-            for (int col = 0; col < quilt.getCols(); col++)
+            for (int row = 0; row < quilt.getRows(); row++)
             {
-                String fileName = getFileName(row, col);
-                RawImage rawImage = imageRepository.getInstanceByName(fileName);
+                for (int col = 0; col < quilt.getCols(); col++)
+                {
+                    String fileName = getFileName(row, col);
+                    RawImage rawImage = imageRepository.getInstanceByName(fileName);
 
-                int rotation = NumberUtilities.getRandomNumber(3);
+                    int rotation = NumberUtilities.getRandomNumber(3);
 
-                Image image = ImageUtilities.getImage(rawImage);
-                Image scaledImage = ImageUtilities.scaleImage(image);
-                Image rotatedImage = ImageUtilities.transformImage(scaledImage, rotation);
+                    Image image = ImageUtilities.getImage(rawImage);
+                    Image scaledImage = ImageUtilities.scaleImage(image);
+                    Image rotatedImage = ImageUtilities.transformImage(scaledImage, rotation);
 
-                QuiltTile tile = TileUtilities.createTile(rotatedImage, rotation);
-                tile.setImage(rawImage);
-                quilt.addComponent(tile);
-                quilt.addTile(tile);
+                    QuiltTile tile = TileUtilities.createTile(rotatedImage, rotation);
+                    tile.setImage(rawImage);
+                    quilt.addComponent(tile);
+                    quilt.addTile(tile);
+                }
             }
+
+            jQuiltPanel.add(quilt);
+            content.add(jQuiltPanel);
+
+            frame.setContentPane(content);
         }
-
-        jQuiltPanel.add(quilt);
-        content.add(jQuiltPanel);
-
-        frame.setContentPane(content);
     }
 
     private Object[] getImageList(JFrame frame)

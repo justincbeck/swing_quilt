@@ -45,6 +45,7 @@ public class QuiltPanel extends JPanel
     private void start()
     {
         mainFrame.setSize(750, 600);
+        mainFrame.setIconImage(ImageUtilities.getApplicationIconImage());
 
         Container content = mainFrame.getContentPane();
         content.setLayout(new FlowLayout());

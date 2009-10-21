@@ -1,8 +1,10 @@
 package com.beckproduct.quilt.utilities;
 
 import javax.swing.*;
+import javax.imageio.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.*;
 
 import org.apache.log4j.*;
 import com.beckproduct.quilt.domain.*;
@@ -66,5 +68,20 @@ public class ImageUtilities
     public static Image scaleImage(Image rawImage)
     {
         return rawImage.getScaledInstance(50, 50, 0);
+    }
+
+    public static Image getApplicationIconImage()
+    {
+        File file = new File("images/icon.gif");
+        try
+        {
+            return ImageIO.read(file);
+        }
+        catch (IOException e)
+        {
+            logger.error(e.getMessage(), e);
+        }
+
+        return null;
     }
 }

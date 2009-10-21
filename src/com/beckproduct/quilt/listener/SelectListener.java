@@ -8,6 +8,8 @@ import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.event.*;
 import java.awt.*;
+import java.util.*;
+import java.util.List;
 
 
 public class SelectListener implements ActionListener
@@ -27,6 +29,8 @@ public class SelectListener implements ActionListener
         Quilt quilt = (Quilt) quiltRepository.getInstanceByName(getSelection(event));
         quilt.setLayoutManager(new GridLayout(quilt.getRows(), quilt.getCols(), 0, 0));
 
+        ArrayList<String> names = new ArrayList<String>();
+
         for (QuiltTile quiltTile : quilt.getTiles())
         {
             Image image = ImageUtilities.getImage(quiltTile.getImage());
@@ -35,10 +39,12 @@ public class SelectListener implements ActionListener
 
             QuiltTile tile = TileUtilities.createTile(rotatedImage, quiltTile.getRotation());
             quilt.addComponent(tile);
+
+            names.add(quiltTile.getImage().getName());
         }
 
         Container content = mainFrame.getContentPane();
-        mainFrame = (JFrame) QuiltUtilities.removeCurrentQuilt(mainFrame);
+        mainFrame = QuiltUtilities.removeCurrentQuilt(mainFrame);
         
         JPanel jQuiltPanel = new JPanel(new BorderLayout());
         jQuiltPanel.setName("quiltPanel");
@@ -61,6 +67,13 @@ public class SelectListener implements ActionListener
         rowsField.setText(String.valueOf(quilt.getRows()));
         colsField.setText(String.valueOf(quilt.getCols()));
 
+        JList list = WindowUtilities.getJList(mainFrame);
+        DefaultListModel model = (DefaultListModel) list.getModel();
+        int[] indeces = new int[names.size()];
+
+        for (int i = 0; i < names.size(); i++) indeces[i] = model.indexOf(names.get(i));
+
+        list.setSelectedIndices(indeces);
         mainFrame.setContentPane(content);
     }
 

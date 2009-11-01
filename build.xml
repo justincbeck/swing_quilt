@@ -1,5 +1,6 @@
 <project name="${proj.name} ${version} by ${author}" default="compile" basedir=".">
 
+    <!-- Name of project and version -->
     <property name="proj.name" value="Quilt Generator"/>
     <property name="proj.shortname" value="quilt_generator"/>
     <property name="version" value="1.0"/>
@@ -93,7 +94,7 @@
               fork="true"
               spawn="no"
               classpathref="main.classpath">
-            <jvmarg value="-Dcom.apple.mrj.application.apple.menu.about.name=Quilt Generator"/>
+            <jvmarg value="-Dcom.apple.mrj.application.apple.menu.about.name=Quilter"/>
             <classpath path="${build.dir}"/>
         </java>
     </target>

@@ -30,6 +30,7 @@ public class QuiltPanel extends JPanel
     public static void main(String[] args)
     {
         BasicConfigurator.configure();
+
         WindowUtilities.setNativeLookAndFeel();
 
         String[] contextPaths = new String[]{"conf/applicationContext.xml"};

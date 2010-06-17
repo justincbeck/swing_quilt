@@ -29,7 +29,7 @@ public class QuiltPanel extends JPanel
 
     public static void main(String[] args)
     {
-        BasicConfigurator.configure();
+        PropertyConfigurator.configure("conf/log4j.conf");
 
         WindowUtilities.setNativeLookAndFeel();
 

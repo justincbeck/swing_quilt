@@ -11,7 +11,6 @@ public class WindowUtilities
     {
         try
         {
-            System.setProperty("apple.laf.useScreenMenuBar", "true");
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         }
         catch (Exception e)

@@ -1,6 +1,6 @@
 package com.beckproduct.quilt.frame;
 
-import com.beckproduct.quilt.menu.*;
+import com.beckproduct.quilt.menu.MainMenuBar;
 
 import javax.swing.*;
 

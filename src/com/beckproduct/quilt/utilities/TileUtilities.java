@@ -1,10 +1,9 @@
 package com.beckproduct.quilt.utilities;
 
-import com.beckproduct.quilt.domain.*;
+import com.beckproduct.quilt.domain.QuiltTile;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.*;
 
 /**
  * Created by IntelliJ IDEA.

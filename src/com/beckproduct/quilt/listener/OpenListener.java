@@ -1,13 +1,11 @@
 package com.beckproduct.quilt.listener;
 
-import java.awt.event.*;
-import java.awt.*;
-import java.util.*;
-import java.util.List;
-
-import com.beckproduct.quilt.repository.*;
+import com.beckproduct.quilt.repository.IQuiltRepository;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.

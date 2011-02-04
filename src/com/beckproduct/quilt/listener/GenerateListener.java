@@ -1,20 +1,21 @@
 package com.beckproduct.quilt.listener;
 
+import com.beckproduct.quilt.domain.Quilt;
+import com.beckproduct.quilt.domain.QuiltTile;
+import com.beckproduct.quilt.domain.RawImage;
+import com.beckproduct.quilt.repository.IImageRepository;
 import com.beckproduct.quilt.utilities.*;
-import com.beckproduct.quilt.domain.*;
-import com.beckproduct.quilt.repository.*;
-import org.apache.log4j.*;
 
 import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class GenerateListener implements ActionListener
 {
-    static Logger logger = Logger.getLogger(GenerateListener.class);
-
     private JFrame frame;
 
     private int cols;

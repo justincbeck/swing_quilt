@@ -1,6 +1,6 @@
 package com.beckproduct.quilt.menu.item;
 
-import com.beckproduct.quilt.listener.*;
+import com.beckproduct.quilt.listener.AddImageListener;
 
 import javax.swing.*;
 

@@ -1,7 +1,7 @@
 package com.beckproduct.quilt.frame;
 
-import com.beckproduct.quilt.listener.*;
-import com.beckproduct.quilt.repository.*;
+import com.beckproduct.quilt.listener.SelectListener;
+import com.beckproduct.quilt.repository.IQuiltRepository;
 
 import javax.swing.*;
 import java.awt.*;

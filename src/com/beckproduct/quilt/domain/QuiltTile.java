@@ -1,8 +1,8 @@
 package com.beckproduct.quilt.domain;
 
 
-import javax.swing.*;
 import javax.persistence.*;
+import javax.swing.*;
 
 /**
  * Created by IntelliJ IDEA.

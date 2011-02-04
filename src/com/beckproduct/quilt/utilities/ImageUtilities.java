@@ -1,13 +1,14 @@
 package com.beckproduct.quilt.utilities;
 
+import com.beckproduct.quilt.domain.RawImage;
+import org.apache.log4j.Logger;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.imageio.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.*;
-
-import org.apache.log4j.*;
-import com.beckproduct.quilt.domain.*;
+import java.io.File;
+import java.io.IOException;
 
 public class ImageUtilities
 {

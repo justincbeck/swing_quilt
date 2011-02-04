@@ -1,6 +1,9 @@
 package com.beckproduct.quilt.utilities;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * Created by IntelliJ IDEA.
@@ -19,7 +22,7 @@ public class FileUtilities
         byte[] bytes = new byte[(int)length];
 
         int offset = 0;
-        int numRead = 0;
+        int numRead;
         
         while (offset < bytes.length && (numRead = is.read(bytes, offset, bytes.length-offset)) >= 0)
         {

@@ -1,11 +1,12 @@
 package com.beckproduct.quilt.listener;
 
-import com.beckproduct.quilt.repository.*;
-import com.beckproduct.quilt.domain.*;
+import com.beckproduct.quilt.domain.Quilt;
+import com.beckproduct.quilt.repository.IQuiltRepository;
 
 import javax.swing.*;
-import java.awt.event.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 public class SaveAsListener implements ActionListener

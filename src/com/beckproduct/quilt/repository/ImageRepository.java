@@ -1,13 +1,13 @@
 package com.beckproduct.quilt.repository;
 
-import org.apache.log4j.*;
+import com.beckproduct.quilt.domain.RawImage;
+import org.apache.log4j.Logger;
 
-import javax.persistence.*;
-
-import com.beckproduct.quilt.domain.*;
-
-import java.io.*;
-import java.util.*;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.

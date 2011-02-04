@@ -1,9 +1,9 @@
 package com.beckproduct.quilt.repository;
 
-import com.beckproduct.quilt.domain.*;
+import com.beckproduct.quilt.domain.RawImage;
 
-import java.io.*;
-import java.util.*;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.

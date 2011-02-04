@@ -1,15 +1,20 @@
 package com.beckproduct.quilt.listener;
 
-import com.beckproduct.quilt.repository.*;
-import com.beckproduct.quilt.domain.*;
-import com.beckproduct.quilt.utilities.*;
+import com.beckproduct.quilt.domain.Quilt;
+import com.beckproduct.quilt.domain.QuiltTile;
+import com.beckproduct.quilt.repository.IQuiltRepository;
+import com.beckproduct.quilt.utilities.ImageUtilities;
+import com.beckproduct.quilt.utilities.QuiltUtilities;
+import com.beckproduct.quilt.utilities.TileUtilities;
+import com.beckproduct.quilt.utilities.WindowUtilities;
 
 import javax.swing.*;
-import javax.swing.border.*;
-import java.awt.event.*;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
-import java.util.*;
-import java.util.List;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 
 public class SelectListener implements ActionListener

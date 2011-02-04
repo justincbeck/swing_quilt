@@ -1,14 +1,16 @@
 package com.beckproduct.quilt.listener;
 
-import org.apache.log4j.*;
+import com.beckproduct.quilt.domain.RawImage;
+import com.beckproduct.quilt.repository.IImageRepository;
+import com.beckproduct.quilt.utilities.FileUtilities;
+import com.beckproduct.quilt.utilities.WindowUtilities;
+import org.apache.log4j.Logger;
 
 import javax.swing.*;
-import java.awt.event.*;
-import java.io.*;
-
-import com.beckproduct.quilt.repository.*;
-import com.beckproduct.quilt.utilities.*;
-import com.beckproduct.quilt.domain.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Created by IntelliJ IDEA.

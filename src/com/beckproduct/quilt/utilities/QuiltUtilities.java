@@ -1,10 +1,10 @@
 package com.beckproduct.quilt.utilities;
 
-import org.apache.commons.lang.*;
+import org.apache.commons.lang.StringUtils;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.*;
+import java.util.Calendar;
 
 /**
  * Created by IntelliJ IDEA.

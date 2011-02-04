@@ -1,11 +1,10 @@
 package com.beckproduct.quilt.domain;
 
-import javax.swing.*;
 import javax.persistence.*;
-
-import java.util.*;
-import java.util.List;
+import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.

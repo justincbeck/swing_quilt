@@ -1,6 +1,6 @@
 package com.beckproduct.quilt.utilities;
 
-import com.beckproduct.quilt.listener.*;
+import com.beckproduct.quilt.listener.ExitListener;
 
 import javax.swing.*;
 import java.awt.*;

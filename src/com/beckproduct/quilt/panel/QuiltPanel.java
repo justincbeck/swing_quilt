@@ -1,22 +1,23 @@
 package com.beckproduct.quilt.panel;
 
-import com.beckproduct.quilt.listener.*;
-import com.beckproduct.quilt.utilities.*;
-import com.beckproduct.quilt.repository.*;
+import com.beckproduct.quilt.listener.ExitListener;
+import com.beckproduct.quilt.listener.GenerateListener;
+import com.beckproduct.quilt.repository.IImageRepository;
+import com.beckproduct.quilt.utilities.ImageUtilities;
+import com.beckproduct.quilt.utilities.WindowUtilities;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import javax.swing.*;
-import javax.swing.border.*;
+import javax.swing.border.Border;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
-
-import org.springframework.context.support.*;
-import org.springframework.context.*;
-import org.apache.log4j.*;
 
 public class QuiltPanel extends JPanel
 {
     public static final long serialVersionUID = 1l;
-
-    static Logger logger = Logger.getLogger(QuiltPanel.class);
 
     private JFrame mainFrame;
 

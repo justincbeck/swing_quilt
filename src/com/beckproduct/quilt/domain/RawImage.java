@@ -64,13 +64,4 @@ public class RawImage
         this.image = image;
     }
 
-//    public QuiltTile getTile()
-//    {
-//        return tile;
-//    }
-//
-//    public void setTile(QuiltTile tile)
-//    {
-//        this.tile = tile;
-//    }
 }

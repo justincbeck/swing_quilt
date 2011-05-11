@@ -5,7 +5,6 @@ import com.beckproduct.quilt.listener.GenerateListener;
 import com.beckproduct.quilt.repository.IImageRepository;
 import com.beckproduct.quilt.utilities.ImageUtilities;
 import com.beckproduct.quilt.utilities.WindowUtilities;
-import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;

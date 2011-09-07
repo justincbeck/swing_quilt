@@ -89,6 +89,7 @@ public class Quilt extends JPanel
     /**
      * @return Returns the name.
      */
+    @Override
     public String getName()
     {
         return name;
@@ -98,6 +99,7 @@ public class Quilt extends JPanel
      * @param name
      *            The name to set.
      */
+    @Override
     public void setName(String name)
     {
         this.name = name;

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+  <bean id="dataSource"
+        class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+    <property name="url" value="jdbc:mysql://localhost/swing_quilt" />
+    <property name="username" value="root" />
+    <property name="password" value="" />
+  </bean>
+
+  <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+    <property name="persistenceUnitName" value="swing_quilt" />
+  </bean>
+
+  <bean id="mainFrame"
+        class="com.beckproduct.quilt.frame.MainFrame">
+    <constructor-arg value="Sarah's quilt generator!" />
+    <constructor-arg value="mainFrame" />
+    <property name="mainMenuBar">
+      <ref local="mainMenuBar" />
+    </property>
+  </bean>
+
+  <bean id="openFrame"
+        class="com.beckproduct.quilt.frame.OpenFrame">
+    <constructor-arg value="Open quilt" />
+    <constructor-arg ref="mainFrame" />
+    <constructor-arg ref="quiltRepository" />
+  </bean>
+
+  <bean id="mainMenuBar"
+        class="com.beckproduct.quilt.menu.MainMenuBar">
+    <property name="fileMenu">
+      <ref local="fileMenu" />
+    </property>
+    <property name="imageMenu">
+      <ref local="imageMenu" />
+    </property>
+  </bean>
+
+  <bean id="fileMenu" init-method="init"
+        class="com.beckproduct.quilt.menu.FileMenu">
+    <property name="openMenuItem">
+      <ref local="openMenuItem" />
+    </property>
+    <property name="saveMenuItem">
+      <ref local="saveMenuItem" />
+    </property>
+    <property name="saveAsMenuItem">
+      <ref local="saveAsMenuItem" />
+    </property>
+    <!--<property name="printMenuItem">-->
+    <!--<ref local="printMenuItem" />-->
+    <!--</property>-->
+  </bean>
+
+  <bean id="imageMenu" init-method="init"
+        class="com.beckproduct.quilt.menu.ImageMenu">
+    <property name="addImageMenuItem">
+      <ref local="addImageMenuItem" />
+    </property>
+  </bean>
+
+  <bean id="addImageMenuItem" init-method="init"
+        class="com.beckproduct.quilt.menu.item.AddImageMenuItem">
+    <property name="actionListener">
+      <ref local="addImageListener" />
+    </property>
+  </bean>
+
+  <bean id="openMenuItem" init-method="init"
+        class="com.beckproduct.quilt.menu.item.OpenMenuItem">
+    <property name="actionListener">
+      <ref local="openListener" />
+    </property>
+  </bean>
+
+  <bean id="saveMenuItem" init-method="init"
+        class="com.beckproduct.quilt.menu.item.SaveMenuItem">
+    <property name="actionListener">
+      <ref local="saveListener" />
+    </property>
+  </bean>
+
+  <bean id="saveAsMenuItem" init-method="init"
+        class="com.beckproduct.quilt.menu.item.SaveAsMenuItem">
+    <property name="actionListener">
+      <ref local="saveAsListener" />
+    </property>
+  </bean>
+
+  <bean id="printMenuItem" init-method="init"
+        class="com.beckproduct.quilt.menu.item.PrintMenuItem">
+    <property name="actionListener">
+      <ref local="printListener" />
+    </property>
+  </bean>
+
+  <bean id="addImageListener"
+        class="com.beckproduct.quilt.listener.AddImageListener">
+    <constructor-arg ref="mainFrame" />
+    <property name="imageRepository">
+      <ref local="imageRepository" />
+    </property>
+  </bean>
+
+  <bean id="openListener"
+        class="com.beckproduct.quilt.listener.OpenListener">
+    <property name="quiltRepository">
+      <ref local="quiltRepository" />
+    </property>
+    <property name="openFrame">
+      <ref local="openFrame" />
+    </property>
+  </bean>
+
+  <bean id="saveListener"
+        class="com.beckproduct.quilt.listener.SaveListener">
+    <constructor-arg ref="mainFrame" />
+    <property name="quiltRepository">
+      <ref local="quiltRepository" />
+    </property>
+  </bean>
+
+  <bean id="saveAsListener"
+        class="com.beckproduct.quilt.listener.SaveAsListener">
+    <constructor-arg ref="mainFrame" />
+    <property name="quiltRepository">
+      <ref local="quiltRepository" />
+    </property>
+  </bean>
+
+  <bean id="printListener"
+        class="com.beckproduct.quilt.listener.PrintListener">
+  </bean>
+
+  <bean id="quiltRepository"
+        class="com.beckproduct.quilt.repository.QuiltRepository">
+    <property name="entityManagerFactory">
+      <ref local="entityManagerFactory" />
+    </property>
+  </bean>
+
+  <bean id="imageRepository"
+        class="com.beckproduct.quilt.repository.ImageRepository">
+    <property name="entityManagerFactory">
+      <ref local="entityManagerFactory" />
+    </property>
+  </bean>
+</beans>

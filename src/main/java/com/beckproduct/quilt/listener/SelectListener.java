@@ -16,7 +16,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-
 public class SelectListener implements ActionListener
 {
     private JFrame mainFrame;
@@ -74,11 +73,11 @@ public class SelectListener implements ActionListener
 
         JList list = WindowUtilities.getJList(mainFrame);
         DefaultListModel model = (DefaultListModel) list.getModel();
-        int[] indeces = new int[names.size()];
+        int[] indices = new int[names.size()];
 
-        for (int i = 0; i < names.size(); i++) indeces[i] = model.indexOf(names.get(i));
+        for (int i = 0; i < names.size(); i++) indices[i] = model.indexOf(names.get(i));
 
-        list.setSelectedIndices(indeces);
+        list.setSelectedIndices(indices);
         mainFrame.setContentPane(content);
     }
 

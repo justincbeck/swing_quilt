@@ -5,19 +5,23 @@ import com.beckproduct.quilt.listener.GenerateListener;
 import com.beckproduct.quilt.repository.IImageRepository;
 import com.beckproduct.quilt.utilities.ImageUtilities;
 import com.beckproduct.quilt.utilities.WindowUtilities;
+import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.io.InputStream;
+import java.util.Properties;
 
 public class QuiltPanel extends JPanel
 {
     public static final long serialVersionUID = 1l;
+
+    static Logger logger = Logger.getLogger(ImageUtilities.class);
 
     private JFrame mainFrame;
 
@@ -30,7 +34,18 @@ public class QuiltPanel extends JPanel
 
     public static void main(String[] args)
     {
-        PropertyConfigurator.configure("log4j.properties");
+        try
+        {
+            InputStream inputStream = QuiltPanel.class.getClassLoader().getResourceAsStream("log4j.properties");
+            Properties properties = new Properties();
+            properties.load(inputStream);
+            PropertyConfigurator.configure(properties);
+        }
+        catch (Exception e)
+        {
+            logger.error(e.getMessage(), e);
+        }
+
 
         WindowUtilities.setNativeLookAndFeel();
 

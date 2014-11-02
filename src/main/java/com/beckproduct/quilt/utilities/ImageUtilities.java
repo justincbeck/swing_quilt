@@ -7,8 +7,8 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 public class ImageUtilities
 {
@@ -73,10 +73,11 @@ public class ImageUtilities
 
     public static Image getApplicationIconImage()
     {
-        File file = new File("images/icon.gif");
+        InputStream inputStream = ImageUtilities.class.getClassLoader().getResourceAsStream("images/icon.gif");
+
         try
         {
-            return ImageIO.read(file);
+            return ImageIO.read(inputStream);
         }
         catch (IOException e)
         {
